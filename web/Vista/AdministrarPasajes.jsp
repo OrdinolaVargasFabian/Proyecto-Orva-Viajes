@@ -26,11 +26,11 @@
         </div>
     </div>
     
-    <%@ include file="componentes/pasaje/modalAgregarPasaje.jsp" %>
+    <%@ include file="../componentes/pasaje/modalAgregarPasaje.jsp" %>
 </div>
 
 <div class="card-datatable table-responsive bg-light p-3 rounded shadow">
-    <table id="datatable-pasaje" class="table table-striped" style="width: 100%;">
+    <table id="datatable-pasaje" class="table table-striped m-3" style="width: 100%;">
         <thead>
             <tr>
                 <td class="text-center">ID</td>
@@ -58,7 +58,7 @@
             </tr>
         </tbody>
     </table>
-    <%@ include file="componentes/pasaje/modalDetallesPasaje.jsp" %>
+    <%@ include file="../componentes/pasaje/modalDetallesPasaje.jsp" %>
 </div>
 <script>
     $(document).ready(function () {
@@ -99,6 +99,7 @@
             search: '',
             searchPlaceholder: 'Search..'
         },
+        buttons: [],
         responsive: false
     });
     });

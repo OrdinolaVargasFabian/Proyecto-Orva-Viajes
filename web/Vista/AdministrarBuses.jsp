@@ -5,11 +5,11 @@
         <button type="button" class="btn btn-primary"><i class='bx bx-refresh me-2'></i>Refrescar</button>
     </div>
     
-    <%@ include file="componentes/bus/modalAgregarBus.jsp" %>
+    <%@ include file="../componentes/bus/modalAgregarBus.jsp" %>
 </div>
 
 <div class="card-datatable table-responsive bg-light p-3 rounded shadow">
-    <table id="datatable-bus" class="table table-striped">
+    <table id="datatable-bus" class="table table-striped m-3">
         <thead>
             <tr>
                 <td class="text-center">ID</td>
@@ -69,6 +69,7 @@
             search: '',
             searchPlaceholder: 'Search..'
         },
+        buttons: [],
         responsive: false
     });
     });

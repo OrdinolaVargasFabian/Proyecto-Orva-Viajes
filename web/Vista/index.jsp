@@ -2,7 +2,7 @@
 
 <div class="tab-content col-9 m-3" id="v-pills-tabContent">
     <div class="d-flex align-items-center p-2 rounded mb-3" style="background-color: rgb(21, 37, 58);">
-        <img src="Orva_Viajes_logo.png" class="img-fluid me-3" alt="..." width="100px">
+        <img src="../Imagenes/Orva_Viajes_logo.png" class="img-fluid me-3" alt="..." width="100px">
         <h1 class="m-0 text-white">Orva Viajes</h1>
     </div>
     <div class="tab-pane fade show active" id="v-pills-bus" role="tabpanel" aria-labelledby="v-pills-bus-tab">

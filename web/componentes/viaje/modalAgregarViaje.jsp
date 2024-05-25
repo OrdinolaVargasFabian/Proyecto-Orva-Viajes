@@ -15,8 +15,8 @@
                 <form id="frmAddViaje" class="row g-3" onsubmit="return false">
                     <div class="row mb-3">
                         <div class="col-6">
-                            <label for="bus">Bus de Viaje</label>
-                            <select name="bus" id="busVi" class="form-select">
+                            <label for="slctBusVi">Bus de Viaje</label>
+                            <select name="slctBus" id="slctBusVi" class="form-select">
                                 <option value="">[Seleccione]</option>
                                 <option value="1">Bus 1</option>
                                 <option value="2">Bus 2</option>
@@ -24,8 +24,8 @@
                             </select>
                         </div>
                         <div class="col-6">
-                            <label for="chofer">Chofer Destinado</label>
-                            <select name="chofer" id="choferVi" class="form-select">
+                            <label for="slctChoferVi">Chofer Destinado</label>
+                            <select name="slctChofer" id="slctChoferVi" class="form-select">
                                 <option value="">[Seleccione]</option>
                                 <option value="1">Chofer 1</option>
                                 <option value="2">Chofer 2</option>
@@ -35,16 +35,16 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                            <label for="fechaSalida">Fecha de Salida</label>
-                            <input type="date" name="fechaSalida" id="fechaSalidaVi" class="form-control">
+                            <label for="txtFechaSalidaVi">Fecha de Salida</label>
+                            <input type="date" name="txtFechaSalida" id="txtFechaSalidaVi" class="form-control">
                         </div>
                         <div class="col">
-                            <label for="horaSalida">Hora de Salida</label>
-                            <input type="time" name="horaSalida" id="horaSalidaVi" class="form-control">
+                            <label for="txtHoraSalidaVi">Hora de Salida</label>
+                            <input type="time" name="txtHoraSalida" id="txtHoraSalidaVi" class="form-control">
                         </div>
                         <div class="col">
-                            <label for="origen">Lugar de Salida</label>
-                            <select name="origen" id="origenVi" class="form-select">
+                            <label for="slctOrigenVi">Lugar de Salida</label>
+                            <select name="slctOrigen" id="slctOrigenVi" class="form-select">
                                 <option value="">[Seleccione]</option>
                                 <option value="1">Lugar 1</option>
                                 <option value="2">Lugar 2</option>
@@ -54,16 +54,16 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col">
-                            <label for="fechaLlegada">Fecha de Llegada</label>
-                            <input type="date" name="fechaLlegada" id="fechaLlegadaVi" class="form-control">
+                            <label for="txtFechaLlegadaVi">Fecha de Llegada</label>
+                            <input type="date" name="txtFechaLlegada" id="txtFechaLlegadaVi" class="form-control">
                         </div>
                         <div class="col">
-                            <label for="horaLlegada">Hora de Llegada</label>
-                            <input type="time" name="horaLlegada" id="horaLlegadaVi" class="form-control">
+                            <label for="txtHoraLlegadaVi">Hora de Llegada</label>
+                            <input type="time" name="txtHoraLlegada" id="txtHoraLlegadaVi" class="form-control">
                         </div>
                         <div class="col">
-                            <label for="destino">Lugar de Llegada</label>
-                            <select name="destino" id="destinoVi" class="form-select">
+                            <label for="slctDestinoVi">Lugar de Llegada</label>
+                            <select name="slctDestino" id="slctDestinoVi" class="form-select">
                                 <option value="">[Seleccione]</option>
                                 <option value="1">Lugar 1</option>
                                 <option value="2">Lugar 2</option>
@@ -73,8 +73,8 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">
-                            <label for="precio">Precio</label>
-                            <input type="text" name="precio" id="precioVi" class="form-control">
+                            <label for="txtPrecioVi">Precio</label>
+                            <input type="text" name="txtPrecio" id="txtPrecioVi" class="form-control">
                         </div>
                     </div>
                 </form>
