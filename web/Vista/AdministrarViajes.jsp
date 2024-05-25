@@ -18,7 +18,7 @@
         </div>
     </div>
     
-    <%@ include file="componentes/viaje/modalAgregarViaje.jsp" %>
+    <%@ include file="../componentes/viaje/modalAgregarViaje.jsp" %>
 </div>
 
 <div class="card-datatable table-responsive bg-light p-3 rounded shadow">
