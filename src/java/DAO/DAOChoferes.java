@@ -3,35 +3,43 @@ package DAO;
 import Modelo.DTOChofer;
 import Interfaces.CRUDChoferes;
 import Persistencia.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.LinkedList;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class DAOChoferes extends Conexion implements CRUDChoferes {
 
-    DTOChofer chofer;
+    
+    
 
-    public DAOChoferes() {}
+    public DAOChoferes() {
+        super();
+    }
 
     @Override
     public LinkedList<DTOChofer> ListarChoferes() {
         LinkedList <DTOChofer> Lista = new LinkedList();
-        String consulta = "SELECT * FROM chofer";
+        String consulta = "select * from chofer";
         try {
-            rs = smt.executeQuery(consulta);
-            while (rs.next()) {
+            ps = con.prepareStatement(consulta);
+            rs = ps.executeQuery();
+            while (rs.next()) { 
+                DTOChofer chofer = new DTOChofer();
                 chofer = new DTOChofer();
-                chofer.setId(rs.getInt(1));
-                chofer.setAppat(rs.getString(2));
-                chofer.setApmat(rs.getString(3));
-                chofer.setNombre(rs.getString(4));
-                chofer.setDni(rs.getInt(5));
-                chofer.setLicenciaConducir(rs.getString(6));
-                chofer.setFechaContratacion(rs.getDate(7));
-                chofer.setFechaVencimientoLicencia(rs.getDate(8));
-                chofer.setTelefono(rs.getInt(9));
-                chofer.setDisponibilidad(rs.getInt(10));
-                chofer.setEstado(rs.getInt(11));
+                chofer.setId(rs.getInt("idChofer"));
+                chofer.setAppat(rs.getString("appat"));
+                chofer.setApmat(rs.getString("apmat"));
+                chofer.setNombre(rs.getString("nombre"));
+                chofer.setDni(rs.getInt("dni"));
+                chofer.setLicenciaConducir(rs.getString("licenciaConducir"));
+                chofer.setFechaContratacion(rs.getDate("fechaContratacion"));
+                chofer.setFechaVencimientoLicencia(rs.getDate("fechaVencimientoLicencia"));
+                chofer.setTelefono(rs.getInt("telefono"));
+                chofer.setDisponibilidad(rs.getInt("disponibilidad"));
+                chofer.setEstado(rs.getInt("estado"));
                 Lista.add(chofer);
             }
         } catch (Exception ex) {
@@ -49,6 +57,7 @@ public class DAOChoferes extends Conexion implements CRUDChoferes {
             while (rs.next()) {
                 rs = smt.executeQuery(consulta);
                 while (rs.next()) {
+                    DTOChofer chofer = new DTOChofer();
                     chofer = new DTOChofer();
                     chofer.setId(rs.getInt(1));
                     chofer.setAppat(rs.getString(2));

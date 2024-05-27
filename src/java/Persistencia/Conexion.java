@@ -16,4 +16,8 @@ public class Conexion implements Parametros {
             mensaje="ERROR al conectar a la base de datos.."+ex;
         }
     }
+    public Connection getConnection(){
+        return con;
+    } 
+    
 }

@@ -57,16 +57,17 @@
                 searchable: false,
                 orderable: false,
                 render: function (data, type, full, meta) {
-                    var btnEliminar = "<button onclick='(\"" + full['item_id'] + "\")' type='button' class='btn btn-icon btn-outline-danger  me-2'><i class='tf-icons bx bxs-trash'></i></button>"
-                    var btnEditar = "<button onclick='(\"" + full['item_id'] + "\")' type='button' class='btn btn-icon btn-outline-info  me-2'><i class='bx bxs-edit'></i></button>"
+                    var btnEliminar = "<button onclick='eliminarChofer(\"" + full['item_id'] + "\")' type='button' class='btn btn-icon btn-outline-danger  me-2'><i class='tf-icons bx bxs-trash'></i></button>"
+                    var btnEditar = "<button onclick='editarChofer(\"" + full['item_id'] + "\")' type='button' class='btn btn-icon btn-outline-info  me-2'><i class='bx bxs-edit'></i></button>"
 
                     return (
                         '<div class="d-inline-block text-nowrap">' +
                         btnEditar +
                         btnEliminar +
                         '</div>'
-                    );
+                    );               
                 }
+                
             }
         ],
         order: [[0, 'desc']],
