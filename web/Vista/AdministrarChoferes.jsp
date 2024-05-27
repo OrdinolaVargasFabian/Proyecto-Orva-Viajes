@@ -1,3 +1,5 @@
+<%@page import="Modelo.DTOChofer"%>
+<%@page import="java.util.LinkedList"%>
 <div class="mb-3">
     <hr>
     <div class="d-flex justify-content-between">
@@ -25,16 +27,21 @@
             </tr>
         </thead>
         <tbody>
+            <%--
+                    LinkedList<DTOChofer> choferes = (LinkedList<DTOChofer>) request.getAttribute("choferes");
+                    if (choferes != null) {
+                        for (DTOChofer chofer : choferes) {
+            --%>
             <tr>
-                <td class="text-center">1</td>
-                <td class="text-center">Sanchez Quintana, Jorge</td>
-                <td class="text-center">78364582</td>
-                <td class="text-center">T12345678</td>
-                <td class="text-center">12/11/2023</td>
-                <td class="text-center">24/07/2027</td>
-                <td class="text-center">987654321</td>
-                <td class="text-center">Disponible</td>
-                <td class="text-center">Activo</td>
+                <td class="text-center"><%--= chofer.getId() --%></td> 
+                <td class="text-center"><%--= chofer.getNombre() --%></td>
+                <td class="text-center"><%--= chofer.getDni() --%></td>
+                <td class="text-center"><%--= chofer.getLicenciaConducir() --%></td>
+                <td class="text-center"><%--= chofer.getFechaContratacion() --%></td>
+                <td class="text-center"><%--= chofer.getFechaVencimientoLicencia() --%></td>
+                <td class="text-center"><%--= chofer.getTelefono() --%></td>
+                <td class="text-center"><%--= chofer.getDisponibilidad() == 1 ? "Disponible" : "No Disponible" --%></td>
+                <td class="text-center"><%--= chofer.getEstado() == 1 ? "Activo" : "Inactivo" --%></td>
                 <td class="text-center"></td>
             </tr>
         </tbody>
