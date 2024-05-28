@@ -41,9 +41,6 @@
         <%--Pop Up--%>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
-        <%--JS Administrar Tablas--%>
-        <script src="../js/AdministrarTablas.js" type="text/javascript"></script>
-        
         <link rel="icon" href="../Imagenes/Orva_Viajes_logo.png">
 
         <title>Orva Viajes</title>

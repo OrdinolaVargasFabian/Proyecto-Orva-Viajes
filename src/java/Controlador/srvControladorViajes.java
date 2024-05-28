@@ -44,7 +44,10 @@ public class srvControladorViajes extends HttpServlet {
         String action = request.getParameter("accion");
         
         if (action.equalsIgnoreCase("editar")) {
-            request.setAttribute("idRuta",request.getParameter("idRuta"));
+            int idRuta = Integer.parseInt(request.getParameter("id"));
+            ruta = dao.ObtenerRuta(idRuta);
+            HttpSession session = request.getSession();
+            session.setAttribute("detalleRuta", ruta);
         } else if (action.equalsIgnoreCase("actualizar")) {
             LeerDatos(request, response);
             dao.EditarRuta(ruta);

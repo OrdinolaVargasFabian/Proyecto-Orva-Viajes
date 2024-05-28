@@ -9,16 +9,17 @@
                 </div>
 
                 <div class="text-center mb-4">
-                    <h3>Agregar</h3>
+                    <h3 id="labelTituloModalViaje">Agregar</h3>
                 </div>
                 <hr style="padding-bottom: 20px;">
                 <form id="frmAddViaje" class="row g-3" onsubmit="return false">
+                    <input type="hidden" name="txtAccion">
                     <div class="row mb-3">
                         <div class="col-6">
                             <label for="slctBusVi">Bus de Viaje</label>
                             <select name="slctBus" id="slctBusVi" class="form-select">
                                 <option value="">[Seleccione]</option>
-                                    <option value="1">Bus 1</option>
+                                <option value="1">Bus 1</option>
                             </select>
                         </div>
                         <div class="col-6">
@@ -40,7 +41,7 @@
                         </div>
                         <div class="col">
                             <label for="txtHoraSalidaVi">Hora de Salida</label>
-                            <input type="time" name="txtHoraSalida" id="txtHoraSalidaVi" class="form-control">
+                            <input type="time" name="txtHoraSalida" id="txtHoraSalidaVi" class="form-control" value="${detalleRuta.getHoraSalida()}">
                         </div>
                         <div class="col">
                             <label for="slctOrigenVi">Lugar de Salida</label>
@@ -85,7 +86,7 @@
                 <hr style="padding-bottom: 20px;">
                 <div class="d-flex">
                     <div class="ms-auto">
-                        <a href="javascript:agregarViaje()" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</a>
+                        <button onclick="validarAgregarEditar()" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</button>
                     </div>
                 </div>
             </div>
