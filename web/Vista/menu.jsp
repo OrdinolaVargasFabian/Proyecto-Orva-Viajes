@@ -51,7 +51,7 @@
     <body style="background-color: rgb(231, 239, 246);">
         <div>
             <div class="d-flex align-items-start">
-                <div class="nav flex-column nav-pills me-3 p-3 col-2 d-flex justify-content-between vh-100 shadow" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="background-color: rgb(39, 49, 53);">
+                <div class="nav flex-column nav-pills p-3 col-2 d-flex justify-content-between vh-100 shadow" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="background-color: rgb(39, 49, 53); position: fixed;">
                     <div>
                         <div class="d-flex justify-content-center align-items-center my-4">
                             <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" class="rounded-circle" alt="..." width="100" height="100">
@@ -75,5 +75,6 @@
                         <a href="login.jsp" class="text-white" style="text-decoration: none;"><i class='bx bx-log-out me-2'></i>Cerrar Sesión</a>
                     </div>
                 </div>
+                <div class="col-2"></div>
                 
             

@@ -41,7 +41,13 @@
                 <tr>
                     <td class="text-center">${rutas.getId()}</td>
                     <td class="text-center">${rutas.getIdBus()}</td>
-                    <td class="text-center">${rutas.getIdChofer()}</td>
+                    <td class="text-center">
+                        <c:forEach var="chofer" items="${listaChoferes}" varStatus="contador">
+                            <c:if test="${contador.index == (rutas.getIdChofer()-1)}">
+                                ${chofer.getAppat()} ${chofer.getApmat()}, ${chofer.getNombre()}
+                            </c:if>
+                        </c:forEach>
+                    </td>
                     <td class="text-center">${rutas.getFechaSalida()}  ${rutas.getHoraSalida()}</td>
                     <td class="text-center">${rutas.getFechaLlegada()}  ${rutas.getHoraLlegada()}</td>
                     <td class="text-center">${rutas.getOrigen()}</td>

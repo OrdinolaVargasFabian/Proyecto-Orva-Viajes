@@ -25,9 +25,11 @@
                             <label for="slctChoferVi">Chofer Destinado</label>
                             <select name="slctChofer" id="slctChoferVi" class="form-select">
                                 <option value="">[Seleccione]</option>
-                                <option value="1">Chofer 1</option>
-                                <option value="2">Chofer 2</option>
-                                <option value="3">Chofer 3</option>
+                                <c:forEach var="choferDisponible" items="${listaChoferes}">
+                                    <option value="${choferDisponible.getId()}">
+                                        ${choferDisponible.getAppat()} ${choferDisponible.getApmat()}, ${choferDisponible.getNombre()}
+                                    </option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
