@@ -4,9 +4,17 @@
         <servlet-name>srvIniciarSesion</servlet-name>
         <servlet-class>Controlador.srvIniciarSesion</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>srvControladorViajes</servlet-name>
+        <servlet-class>Controlador.srvControladorViajes</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>srvIniciarSesion</servlet-name>
         <url-pattern>/srvIniciarSesion</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>srvControladorViajes</servlet-name>
+        <url-pattern>/srvControladorViajes</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

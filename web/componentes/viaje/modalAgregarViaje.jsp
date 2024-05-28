@@ -18,9 +18,7 @@
                             <label for="slctBusVi">Bus de Viaje</label>
                             <select name="slctBus" id="slctBusVi" class="form-select">
                                 <option value="">[Seleccione]</option>
-                                <option value="1">Bus 1</option>
-                                <option value="2">Bus 2</option>
-                                <option value="3">Bus 3</option>
+                                    <option value="1">Bus 1</option>
                             </select>
                         </div>
                         <div class="col-6">

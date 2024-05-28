@@ -16,7 +16,7 @@
             <input type="date" class="form-control" placeholder="Fecha de fin">
         </div>
     </div>
-    
+
     <%@ include file="../componentes/viaje/modalAgregarViaje.jsp" %>
 </div>
 
@@ -36,26 +36,28 @@
                 <td class="text-center">ACCIONES</td>
             </tr>
         </thead>
-        <%-- <tbody>
-            <tr>
-                <td class="text-center">1</td>
-                <td class="text-center">Sanchez Quintana, Jorge</td>
-                <td class="text-center">78364582</td>
-                <td class="text-center">T12345678</td>
-                <td class="text-center">12/11/2023</td>
-                <td class="text-center">24/07/2027</td>
-                <td class="text-center">987654321</td>
-                <td class="text-center">Disponible</td>
-                <td class="text-center">Activo</td>
-                <td class="text-center"></td>
-            </tr>
-        </tbody> --%>
+        <tbody>
+            <c:forEach var="rutas" items="${listaRutas}">
+                <tr>
+                    <td class="text-center">${rutas.getId()}</td>
+                    <td class="text-center">${rutas.getIdBus()}</td>
+                    <td class="text-center">${rutas.getIdChofer()}</td>
+                    <td class="text-center">${rutas.getFechaSalida()}  ${rutas.getHoraSalida()}</td>
+                    <td class="text-center">${rutas.getFechaLlegada()}  ${rutas.getHoraLlegada()}</td>
+                    <td class="text-center">${rutas.getOrigen()}</td>
+                    <td class="text-center">${rutas.getDestino()}</td>
+                    <td class="text-center">${rutas.getPrecio()}</td>
+                    <td class="text-center">${rutas.getBoletosRestantes()}</td>
+                    <td class="text-center"></td>
+                </tr>
+            </c:forEach>
+        </tbody>
     </table>
 </div>
 <script>
     $(document).ready(function () {
         $('#datatable-viaje').DataTable({
-        columnDefs: [
+            columnDefs: [
                 {
                     // Actions
                     targets: -1,
@@ -63,7 +65,7 @@
                     orderable: false,
                     render: function (data, type, full, meta) {
                         var btnEliminar = "<button type='button' class='btn btn-icon btn-outline-danger  me-2'><i class='tf-icons bx bxs-trash'></i></button>"
-                        var btnEditar = "<button type='button' class='btn btn-icon btn-outline-info  me-2'><i class='bx bxs-edit'></i></button>"
+                        var btnEditar = "<button type='button' class='btn btn-icon btn-outline-success  me-2'><i class='bx bxs-edit'></i></button>"
 
                         return (
                                 '<div class="d-inline-block text-nowrap">' +
@@ -110,5 +112,16 @@
             ],
             responsive: true
         });
+        obtenerViajes();
     });
+
+    function obtenerViajes() {
+        $.ajax({
+            url: '../srvControladorViajes',
+            type: 'POST',
+            success: function (response) {
+                console.log('Exito ObtenerViajes');
+            }
+        });
+    }
 </script>
