@@ -21,14 +21,20 @@ public class srvControladorViajes extends HttpServlet {
     DTORuta ruta = new DTORuta();
     
     public void LeerDatos(HttpServletRequest request, HttpServletResponse response){
-       ruta.setIdBus(Integer.parseInt(request.getParameter("slctBus")));
-       ruta.setIdChofer(Integer.parseInt(request.getParameter("slctChofer")));
-       ruta.setFechaSalida(Date.valueOf(request.getParameter("txtFechaSalida")));
-       ruta.setHoraSalida(Time.valueOf(request.getParameter("txtHoraSalida")));
-       ruta.setOrigen(Integer.parseInt(request.getParameter("slctOrigen")));
-       ruta.setFechaLlegada(Date.valueOf(request.getParameter("txtFechaLlegada")));
-       ruta.setHoraLlegada(Time.valueOf(request.getParameter("txtHoraLlegada")));
-       ruta.setDestino(Integer.parseInt(request.getParameter("slctDestino")));
+        ruta.setIdBus(Integer.parseInt(request.getParameter("slctBus")));
+        ruta.setIdChofer(Integer.parseInt(request.getParameter("slctChofer")));
+        ruta.setFechaSalida(Date.valueOf(request.getParameter("txtFechaSalida")));
+        //Se modifica para adaptarlo al formato time de sql
+        String horaSalida = request.getParameter("txtHoraSalida") + ":00";
+        ruta.setHoraSalida(Time.valueOf(horaSalida));
+        ruta.setOrigen(Integer.parseInt(request.getParameter("slctOrigen")));
+        ruta.setFechaLlegada(Date.valueOf(request.getParameter("txtFechaLlegada")));
+        //Se modifica para adaptarlo al formato time de sql
+        String horaLlegada = request.getParameter("txtHoraLlegada") + ":00";
+        ruta.setHoraLlegada(Time.valueOf(horaLlegada));
+        ruta.setDestino(Integer.parseInt(request.getParameter("slctDestino")));
+        ruta.setPrecio(Double.parseDouble(request.getParameter("txtPrecio")));
+        ruta.setBoletosRestantes(Integer.parseInt(request.getParameter("txtBoletos")));
     }  
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,6 +52,9 @@ public class srvControladorViajes extends HttpServlet {
             LinkedList<DTORuta> listaRutas = dao.ListarRutas();
             HttpSession session = request.getSession();
             session.setAttribute("listaRutas", listaRutas);
+        } else if (action.equalsIgnoreCase("agregar")) {
+            LeerDatos(request, response);
+            dao.AgregarRuta(ruta);
         }
 
         RequestDispatcher vista = request.getRequestDispatcher("Vista/AdministrarViajes.jsp");

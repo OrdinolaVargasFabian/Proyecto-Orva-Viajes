@@ -71,11 +71,21 @@
                             </select>
                         </div>
                     </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="txtPrecio">Precio</label>
+                            <input type="number" name="txtPrecio" id="txtPrecioVi" class="form-control" step="0.01" min="0">
+                        </div>
+                        <div class="col">
+                            <label for="txtBoletos">Boletos Disponibles</label>
+                            <input type="number" name="txtBoletos" id="txtBoletos" class="form-control" min="0">
+                        </div>
+                    </div>
                 </form>
                 <hr style="padding-bottom: 20px;">
                 <div class="d-flex">
                     <div class="ms-auto">
-                        <a href="../srvControladorViajes?accion=actualizar" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</a>
+                        <a href="javascript:agregarViaje()" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</a>
                     </div>
                 </div>
             </div>

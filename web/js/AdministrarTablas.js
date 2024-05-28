@@ -94,3 +94,76 @@ function obtenerViajes() {
         }
     });
 }
+
+var modalViaje = $('#mdlAgregarViaje');
+
+function validarAgregarEditar() {
+
+}
+
+function agregarViaje() {
+    if (validarFormViajes()) {
+        $.ajax({
+            type: 'POST',
+            data: $('#frmAddViaje').serialize(), // Convierte los datos del formulario a application/x-www-form-urlencoded
+            url: '../srvControladorViajes?accion=agregar',
+            beforeSend: function () {
+                swal.fire({
+                    title: 'ESPERA',
+                    html: 'Procesando...',
+                    didOpen: () => {
+                        swal.showLoading()
+                    }
+                })
+            },
+            success: function (data, textStatus, jqXHR) {
+                swal.fire('CORRECTO', 'Se programó la nueva ruta de viaje', 'success');
+            }
+        });
+    }
+}
+
+function validarFormViajes() {
+    var form = document.getElementById('frmAddViaje');
+    if (form.slctBus.value == "") {
+        swal.fire('¡ERROR!', 'El bus de viaje es requerido', 'error');
+        return false;
+    }
+    if (form.slctChofer.value == "") {
+        swal.fire('¡ERROR!', 'El chofer de viaje es requerido', 'error');
+        return false;
+    }
+    if (form.txtFechaSalida.value == "") {
+        swal.fire('¡ERROR!', 'La fecha de salida es requerida', 'error');
+        return false;
+    }
+    if (form.txtHoraSalida.value == "") {
+        swal.fire('¡ERROR!', 'La hora de salida es requerida', 'error');
+        return false;
+    }
+    if (form.slctOrigen.value == "") {
+        swal.fire('¡ERROR!', 'El origen de viaje es requerido', 'error');
+        return false;
+    }
+    if (form.txtFechaLlegada.value == "") {
+        swal.fire('¡ERROR!', 'La fecha de llegada es requerida', 'error');
+        return false;
+    }
+    if (form.txtHoraLlegada.value == "") {
+        swal.fire('¡ERROR!', 'La hora de llegada es requerida', 'error');
+        return false;
+    }
+    if (form.slctDestino.value == "") {
+        swal.fire('¡ERROR!', 'El destino de viaje es requerido', 'error');
+        return false;
+    }
+    if (form.txtPrecio.value == "") {
+        swal.fire('¡ERROR!', 'El precio de viaje es requerido', 'error');
+        return false;
+    }
+    if (form.txtBoletos.value == "") {
+        swal.fire('¡ERROR!', 'El número de boletos es requerido', 'error');
+        return false;
+    }
+    return true;
+}
