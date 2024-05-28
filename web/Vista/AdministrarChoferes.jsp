@@ -27,66 +27,25 @@
             </tr>
         </thead>
         <tbody>
-            <%--
-                    LinkedList<DTOChofer> choferes = (LinkedList<DTOChofer>) request.getAttribute("choferes");
-                    if (choferes != null) {
-                        for (DTOChofer chofer : choferes) {
-            --%>
-            <tr>
-                <td class="text-center"><%--= chofer.getId() --%></td> 
-                <td class="text-center"><%--= chofer.getNombre() --%></td>
-                <td class="text-center"><%--= chofer.getDni() --%></td>
-                <td class="text-center"><%--= chofer.getLicenciaConducir() --%></td>
-                <td class="text-center"><%--= chofer.getFechaContratacion() --%></td>
-                <td class="text-center"><%--= chofer.getFechaVencimientoLicencia() --%></td>
-                <td class="text-center"><%--= chofer.getTelefono() --%></td>
-                <td class="text-center"><%--= chofer.getDisponibilidad() == 1 ? "Disponible" : "No Disponible" --%></td>
-                <td class="text-center"><%--= chofer.getEstado() == 1 ? "Activo" : "Inactivo" --%></td>
-                <td class="text-center"></td>
-            </tr>
+            <c:forEach var="choferes" items="${listaChoferes}">
+                <tr>
+                    <td class="text-center">${choferes.getId()}</td> 
+                    <td class="text-center">${choferes.getNombre()}</td>
+                    <td class="text-center">${choferes.getDni()}</td>
+                    <td class="text-center">${choferes.getLicenciaConducir()}</td>
+                    <td class="text-center">${choferes.getFechaContratacion()}</td>
+                    <td class="text-center">${choferes.getFechaVencimientoLicencia()}</td>
+                    <td class="text-center">${choferes.getTelefono()}</td>
+                    <td class="text-center">${choferes.getDisponibilidad()}</td>
+                    <td class="text-center">${choferes.getEstado()}</td>
+                    <td class="text-center">
+                        <div class="d-inline-block text-nowrap">
+                            <a href="../srvControladorViajes?accion=editar&idChofer=${choferes.getId()}" type='button' class='btn btn-icon btn-outline-success  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='bx bxs-edit'></i></a>
+                            <a href="../srvControladorViajes?accion=eliminar&idChofer=${choferes.getId()}" type='button' class='btn btn-icon btn-outline-danger  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='tf-icons bx bxs-trash'></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
 </div>
-<script>
-    $(document).ready(function () {
-        $('#datatable-chofer').DataTable({
-        columnDefs: [
-            {
-                // Actions
-                targets: -1,
-                searchable: false,
-                orderable: false,
-                render: function (data, type, full, meta) {
-                    var btnEliminar = "<button onclick='eliminarChofer(\"" + full['item_id'] + "\")' type='button' class='btn btn-icon btn-outline-danger  me-2'><i class='tf-icons bx bxs-trash'></i></button>"
-                    var btnEditar = "<button onclick='editarChofer(\"" + full['item_id'] + "\")' type='button' class='btn btn-icon btn-outline-info  me-2'><i class='bx bxs-edit'></i></button>"
-
-                    return (
-                        '<div class="d-inline-block text-nowrap">' +
-                        btnEditar +
-                        btnEliminar +
-                        '</div>'
-                    );               
-                }
-                
-            }
-        ],
-        order: [[0, 'desc']],
-        dom:
-            '<"row mx-2"' +
-            '<"col-md-2"<"me-3"l>>' +
-            '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"fB>>' +
-            '>t' +
-            '<"row mx-2"' +
-            '<"col-sm-12 col-md-6"i>' +
-            '<"col-sm-12 col-md-6"p>' +
-            '>',
-        language: {
-            sLengthMenu: '_MENU_',
-            search: '',
-            searchPlaceholder: 'Search..'
-        },
-        buttons: [],
-        responsive: false
-    });
-    });
-</script>

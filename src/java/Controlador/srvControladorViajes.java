@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import Modelo.DTORuta;
 import DAO.DAORutas;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.LinkedList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
@@ -15,16 +17,39 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "srvControladorViajes", urlPatterns = {"/srvControladorViajes"})
 public class srvControladorViajes extends HttpServlet {
+    
+    DTORuta ruta = new DTORuta();
+    
+    public void LeerDatos(HttpServletRequest request, HttpServletResponse response){
+       ruta.setIdBus(Integer.parseInt(request.getParameter("slctBus")));
+       ruta.setIdChofer(Integer.parseInt(request.getParameter("slctChofer")));
+       ruta.setFechaSalida(Date.valueOf(request.getParameter("txtFechaSalida")));
+       ruta.setHoraSalida(Time.valueOf(request.getParameter("txtHoraSalida")));
+       ruta.setOrigen(Integer.parseInt(request.getParameter("slctOrigen")));
+       ruta.setFechaLlegada(Date.valueOf(request.getParameter("txtFechaLlegada")));
+       ruta.setHoraLlegada(Time.valueOf(request.getParameter("txtHoraLlegada")));
+       ruta.setDestino(Integer.parseInt(request.getParameter("slctDestino")));
+    }  
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAORutas dao = new DAORutas();
-        LinkedList<DTORuta> listaRutas = dao.ListarRutas();
-        HttpSession session = request.getSession();
-        session.setAttribute("listaRutas", listaRutas);
+        
+        String action = request.getParameter("accion");
+        
+        if (action.equalsIgnoreCase("editar")) {
+            request.setAttribute("idRuta",request.getParameter("idRuta"));
+        } else if (action.equalsIgnoreCase("actualizar")) {
+            LeerDatos(request, response);
+            dao.EditarRuta(ruta);
+        } else if (action.equalsIgnoreCase("listar")) {
+            LinkedList<DTORuta> listaRutas = dao.ListarRutas();
+            HttpSession session = request.getSession();
+            session.setAttribute("listaRutas", listaRutas);
+        }
+
         RequestDispatcher vista = request.getRequestDispatcher("Vista/AdministrarViajes.jsp");
         vista.forward(request, response);
-        System.out.println("Datos: " + listaRutas);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

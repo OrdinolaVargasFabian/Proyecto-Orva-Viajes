@@ -48,80 +48,14 @@
                     <td class="text-center">${rutas.getDestino()}</td>
                     <td class="text-center">${rutas.getPrecio()}</td>
                     <td class="text-center">${rutas.getBoletosRestantes()}</td>
-                    <td class="text-center"></td>
+                    <td class="text-center">
+                        <div class="d-inline-block text-nowrap">
+                            <a href="../srvControladorViajes?accion=editar&idRuta=${rutas.getId()}" type='button' class='btn btn-icon btn-outline-success  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='bx bxs-edit'></i></a>
+                            <a href="../srvControladorViajes?accion=eliminar&idRuta=${rutas.getId()}" type='button' class='btn btn-icon btn-outline-danger  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='tf-icons bx bxs-trash'></i></a>
+                        </div>
+                    </td>
                 </tr>
             </c:forEach>
         </tbody>
     </table>
 </div>
-<script>
-    $(document).ready(function () {
-        $('#datatable-viaje').DataTable({
-            columnDefs: [
-                {
-                    // Actions
-                    targets: -1,
-                    searchable: false,
-                    orderable: false,
-                    render: function (data, type, full, meta) {
-                        var btnEliminar = "<button type='button' class='btn btn-icon btn-outline-danger  me-2'><i class='tf-icons bx bxs-trash'></i></button>"
-                        var btnEditar = "<button type='button' class='btn btn-icon btn-outline-success  me-2'><i class='bx bxs-edit'></i></button>"
-
-                        return (
-                                '<div class="d-inline-block text-nowrap">' +
-                                btnEditar +
-                                btnEliminar +
-                                '</div>'
-                                );
-                    }
-                }
-            ],
-            order: [[0, 'desc']],
-            dom: '<"row mx-2"' +
-                    '<"col-md-2"<"me-3"l>>' +
-                    '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"fB>>' +
-                    '>t' +
-                    '<"row mx-2"' +
-                    '<"col-sm-12 col-md-6"i>' +
-                    '<"col-sm-12 col-md-6"p>' +
-                    '>',
-            language: {
-                sLengthMenu: '_MENU_',
-                search: '',
-                searchPlaceholder: 'Search..'
-            },
-            buttons: [
-                {
-                    extend: 'excel',
-                    text: '<i class="bx bxs-file-export me-2"></i>Excel',
-                    titleAttr: 'Exportar a Excel',
-                    className: 'btn btn-success mx-3 rounded'
-                },
-                {
-                    extend: 'pdf',
-                    text: '<i class="bx bxs-file-pdf me-2"></i>PDF',
-                    titleAttr: 'Exportar a PDF',
-                    className: 'btn btn-danger me-3 rounded'
-                },
-                {
-                    extend: 'print',
-                    text: '<i class="bx bxs-printer me-2"></i>Imprimir',
-                    titleAttr: 'Imprimir',
-                    className: 'btn btn-info text-white rounded'
-                }
-            ],
-            responsive: true
-        });
-        obtenerViajes();
-    });
-
-    function obtenerViajes() {
-        $.ajax({
-            url: '../srvControladorViajes',
-            type: 'POST',
-            success: function (response) {
-                console.log('Exito ObtenerViajes');
-            }
-        });
-    }
-</script>

@@ -69,17 +69,11 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-6">
-                            <label for="txtPrecioVi">Precio</label>
-                            <input type="text" name="txtPrecio" id="txtPrecioVi" class="form-control">
-                        </div>
-                    </div>
                 </form>
                 <hr style="padding-bottom: 20px;">
                 <div class="d-flex">
                     <div class="ms-auto">
-                        <a href="#" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</a>
+                        <a href="../srvControladorViajes?accion=actualizar" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</a>
                     </div>
                 </div>
             </div>

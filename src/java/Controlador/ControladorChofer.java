@@ -5,12 +5,13 @@ import Modelo.DTOChofer;
 import DAO.DAOChoferes;
 import javax.servlet.RequestDispatcher;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.LinkedList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -60,10 +61,15 @@ public void LeerChoferes(HttpServletRequest request, HttpServletResponse respons
         response.setContentType("text/html;charset=UTF-8");
         String acceso="";
         String action = request.getParameter("accion");//accion: listar,agregar,editar,eliminar
+        
+        DAOChoferes dao = new DAOChoferes();
+        
         if(action.equalsIgnoreCase("listar")){
-            acceso=listar;
+            LinkedList<DTOChofer> listaChoferes = dao.ListarChoferes();
+            HttpSession session = request.getSession();
+            session.setAttribute("listaChoferes", listaChoferes);
         }else if(action.equalsIgnoreCase("add")){
-            acceso=add;
+            
         }else if(action.equalsIgnoreCase("Agregar")){
             LeerChoferes(request,response,false);
             DTOChofer chofer = (DTOChofer) request.getAttribute("chofer");
@@ -83,7 +89,7 @@ public void LeerChoferes(HttpServletRequest request, HttpServletResponse respons
             dao.EliminarChofer(id);
             acceso=listar;
         }
-        RequestDispatcher vista = request.getRequestDispatcher(acceso);
+        RequestDispatcher vista = request.getRequestDispatcher("Vista/AdministrarChoferes.jsp");
         vista.forward(request, response);
     }
 
