@@ -28,7 +28,6 @@ public class DAOClientes extends Conexion implements CRUDClientes {
                 cliente.setFechaNacimiento(rs.getString("fechaNacimiento"));
                 cliente.setTelefono(rs.getInt("telefono"));
                 cliente.setGenero(rs.getString("genero"));
-                cliente.setEstado(rs.getInt("estado"));
                 Lista.add(cliente); //agrega un clinete a la lista
             }
         } catch (Exception ex) {
@@ -55,8 +54,6 @@ public class DAOClientes extends Conexion implements CRUDClientes {
                 cliente.setFechaNacimiento(rs.getString("fechaNacimiento"));
                 cliente.setTelefono(rs.getInt("telefono"));
                 cliente.setGenero(rs.getString("genero"));
-                cliente.setEstado(rs.getInt("estado"));
-
             }
         } catch (Exception ex) {
             ex.printStackTrace(); // Muestra la Excepcion
@@ -75,7 +72,6 @@ public class DAOClientes extends Conexion implements CRUDClientes {
             ps.setString(3, cliente.getFechaNacimiento());
             ps.setInt(4, cliente.getTelefono());
             ps.setString(5, cliente.getGenero());
-            ps.setInt(6, cliente.getEstado());
             int rowsInserted = ps.executeUpdate();
             return rowsInserted > 0;
         } catch (Exception ex) {
@@ -95,7 +91,6 @@ public class DAOClientes extends Conexion implements CRUDClientes {
             ps.setString(3, cliente.getFechaNacimiento());
             ps.setInt(4, cliente.getTelefono());
             ps.setString(5, cliente.getGenero());
-            ps.setInt(6, cliente.getEstado());
             int rowsInserted = ps.executeUpdate();
             return rowsInserted > 0;
         } catch (Exception ex) {
@@ -109,7 +104,6 @@ public class DAOClientes extends Conexion implements CRUDClientes {
         String consulta = "DELETE FROM clientes WHERE id = ?";
 
         try {
-            
             ps = con.prepareStatement(consulta);
             ps.setInt(1, id);
             int rowsDeleted = ps.executeUpdate();
@@ -119,34 +113,4 @@ public class DAOClientes extends Conexion implements CRUDClientes {
         }
         return false;
     }
-
-    @Override
-    public DTOCliente ValidarSesion(String correo, String contra) {
-        DTOCliente cliente = null;  // Declaracion de variable
-        String consulta = "SELECT * FROM cliente WHERE correo = ? AND contraseña = ?";
-        try {
-            ps = super.con.prepareStatement(consulta);
-            ps.setString(1, correo);
-            ps.setString(2, contra);
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                cliente = new DTOCliente();
-                cliente.setId(rs.getInt("idCliente"));
-                cliente.setNombre(rs.getString("nombre"));
-                cliente.setAppat(rs.getString("appat"));
-                cliente.setApmat(rs.getString("apmat"));
-                cliente.setDni(rs.getInt("dni"));
-                cliente.setFechaNacimiento(rs.getString("fechaNacimiento"));
-                cliente.setTelefono(rs.getInt("telefono"));
-                cliente.setGenero(rs.getString("genero"));
-                cliente.setCorreo(rs.getString("correo"));
-                cliente.setContra(rs.getString("contraseña"));
-                cliente.setEstado(rs.getInt("estado"));
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace(); // Muestra la Excepcion
-        }
-        return cliente;
-    }
-
 }

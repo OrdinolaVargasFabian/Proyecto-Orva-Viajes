@@ -41,7 +41,7 @@
                         </div>
                         <div class="col">
                             <label for="txtHoraSalidaVi">Hora de Salida</label>
-                            <input type="time" name="txtHoraSalida" id="txtHoraSalidaVi" class="form-control" value="${detalleRuta.getHoraSalida()}">
+                            <input type="time" name="txtHoraSalida" id="txtHoraSalidaVi" class="form-control">
                         </div>
                         <div class="col">
                             <label for="slctOrigenVi">Lugar de Salida</label>

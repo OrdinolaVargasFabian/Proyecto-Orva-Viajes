@@ -10,9 +10,6 @@ public class DTOCliente {
     private String fechaNacimiento;
     private int telefono;
     private String genero;
-    private int estado;
-    private String correo;
-    private String contra;
 
     //Constructor
     public DTOCliente() {}
@@ -81,29 +78,5 @@ public class DTOCliente {
 
     public void setGenero(String genero) {
         this.genero = genero;
-    }
-
-    public int getEstado() {
-        return estado;
-    }
-
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
-    
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getContra() {
-        return contra;
-    }
-
-    public void setContra(String contra) {
-        this.contra = contra;
     }
 }

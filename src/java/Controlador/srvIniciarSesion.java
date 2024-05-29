@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.DAOClientes;
-import Modelo.DTOCliente;
+import DAO.DAOUsuarios;
+import Modelo.DTOUsuario;
 
 public class srvIniciarSesion extends HttpServlet {
 
@@ -33,11 +33,11 @@ public class srvIniciarSesion extends HttpServlet {
     private void VerificarLogin(HttpServletRequest request, HttpServletResponse response) {
         try {
             HttpSession sesion;
-            DAOClientes dao = new DAOClientes();
+            DAOUsuarios dao = new DAOUsuarios();
 
             String correo = request.getParameter("txtCorreo");
             String contra = request.getParameter("txtPassword");
-            DTOCliente user = dao.ValidarSesion(correo, contra);
+            DTOUsuario user = dao.ValidarSesion(correo, contra);
 
             if (user != null) {
                 sesion = request.getSession();

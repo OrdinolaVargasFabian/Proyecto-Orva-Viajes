@@ -106,12 +106,17 @@ function mostrarFormEditarViaje(id) {
     formViaje.reset();
     $.ajax({
             type: 'POST',
+            dataType: 'json',
             url: '../srvControladorViajes?accion=editar&id='+id,
             success: function (data, textStatus, jqXHR) {
                 formViaje.reset();
                 viajeModalLabel.innerText = 'EDITAR';
                 formViaje.txtAccion.value = 'editar';
+                
                 modalFormViaje.show();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log('Error: ' + errorThrown);
             }
         });
 }

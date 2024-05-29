@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Administrar Clientes</title>
-    <!-- Aquí deberías incluir las referencias a Bootstrap CSS y JS si no lo has hecho -->
-</head>
-<body>
+<%@ include file="menu.jsp" %>
+<div class="m-3">
     <div class="mb-3">
         <hr>
         <div class="d-flex justify-content-between">
@@ -29,7 +24,6 @@
                     <td class="text-center">FECHA DE NACIMIENTO</td>
                     <td class="text-center">TELEFONO</td>
                     <td class="text-center">GENERO</td>
-                    <td class="text-center">ESTADO</td>
                     <td class="text-center">ACCIONES</td>
                 </tr>
             </thead>
@@ -40,8 +34,7 @@
                     <td class="text-center">123456789</td>
                     <td class="text-center">1990-01-01</td>
                     <td class="text-center">963852741</td>
-                    <td class="text-center">Masculino</td>
-                    <td class="text-center">Activo</td>
+                    <td class="text-center">M</td>
                     <td class="text-center"></td>
                 </tr>
             </tbody>
@@ -87,5 +80,5 @@
             });
         });
     </script>
-</body>
-</html>
+</div>
+<%@ include file="footer.jsp" %>

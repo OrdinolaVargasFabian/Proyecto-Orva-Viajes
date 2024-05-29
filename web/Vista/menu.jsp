@@ -56,7 +56,7 @@
         </c:if>
         <div>
             <div class="d-flex align-items-start">
-                <div class="nav flex-column nav-pills p-3 col-2 d-flex justify-content-between vh-100 shadow" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="background-color: rgb(39, 49, 53); position: fixed;">
+                <div class="nav flex-column p-3 col-2 d-flex justify-content-between vh-100 shadow" style="background-color: rgb(39, 49, 53); position: fixed;">
                     <div>
                         <div class="d-flex justify-content-center align-items-center my-4">
                             <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" class="rounded-circle" alt="..." width="100" height="100">
@@ -68,11 +68,23 @@
                     
                     <hr class="text-white">
 
-                    <button class="nav-link active" id="v-pills-bus-tab" data-bs-toggle="pill" data-bs-target="#v-pills-bus" type="button" role="tab" aria-controls="v-pills-bus" aria-selected="true"><i class='bx bxs-bus me-2'></i>Registrar Bus</button>
-                    <button class="nav-link" id="v-pills-chofer-tab" data-bs-toggle="pill" data-bs-target="#v-pills-chofer" type="button" role="tab" aria-controls="v-pills-chofer" aria-selected="false"><i class='bx bxs-user-account me-2'></i>Registrar Choferes</button>
-                    <button class="nav-link" id="v-pills-viaje-tab" data-bs-toggle="pill" data-bs-target="#v-pills-viaje" type="button" role="tab" aria-controls="v-pills-viaje" aria-selected="false"><i class='bx bxs-map me-2'></i>Programar Ruta</button>
-                    <button class="nav-link" id="v-pills-cliente-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cliente" type="button" role="tab" aria-controls="v-pills-cliente" aria-selected="false"><i class='bx bx-user me-2'></i>Registrar Cliente</button>
-                    <button class="nav-link" id="v-pills-pasaje-tab" data-bs-toggle="pill" data-bs-target="#v-pills-pasaje" type="button" role="tab" aria-controls="v-pills-pasaje" aria-selected="false"><i class='bx bxs-coupon me-2'></i>Pasajes</button>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-3">
+                            <a class="nav-link text-white" aria-current="page" href="AdministrarBuses.jsp"><i class='bx bxs-bus me-2'></i>Registrar Bus</a>
+                        </li>
+                        <li class="nav-item mb-3">
+                            <a class="nav-link text-white" aria-current="page" href="AdministrarChoferes.jsp"><i class='bx bxs-user-account me-2'></i>Registrar Choferes</a>
+                        </li>
+                        <li class="nav-item mb-3">
+                            <a class="nav-link text-white" aria-current="page" href="AdministrarViajes.jsp"><i class='bx bxs-map me-2'></i>Programar Ruta</a>
+                        </li>
+                        <li class="nav-item mb-3">
+                            <a class="nav-link text-white" aria-current="page" href="AdministrarClientes.jsp"><i class='bx bx-user me-2'></i>Registrar Cliente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" aria-current="page" href="AdministrarPasajes.jsp"><i class='bx bxs-coupon me-2'></i>Pasajes</a>
+                        </li>
+                    </ul>
                     
                     <hr class="text-white">
                     
@@ -81,5 +93,12 @@
                     </div>
                 </div>
                 <div class="col-2"></div>
-                
+                <div class="col-10">
+                    <div class="row">
+                        <!<!-- Banner superior con el logo -->
+                        <div class="d-flex align-items-center justify-content-center p-2 flex-fill" style="background-color: rgb(21, 37, 58);">
+                            <img src="../Imagenes/Orva_Viajes_logo.png" class="img-fluid me-3" alt="..." width="100px">
+                            <h1 class="m-0 text-white">Orva Viajes</h1>
+                        </div>
+                    </div>
             

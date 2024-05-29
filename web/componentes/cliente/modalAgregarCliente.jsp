@@ -26,11 +26,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="genero" class="form-label">Género</label>
-                        <input type="text" class="form-control" id="genero" name="genero" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="estado" class="form-label">Estado</label>
-                        <input type="text" class="form-control" id="estado" name="estado" required>
+                        <select name="genero" id="genero" class="form-select" required>
+                            <option value="">[Seleccione]</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
