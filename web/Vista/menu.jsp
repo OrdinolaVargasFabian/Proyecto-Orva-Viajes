@@ -46,6 +46,14 @@
         <title>Orva Viajes</title>
     </head>
     <body style="background-color: rgb(231, 239, 246);">
+        <!-- Establece la sesion iniciada -->
+        <c:set var="usuario" value="${sessionScope.user}"/>
+        <!-- Valida si hay una sesion activa -->
+        <c:if test="${usuario == null}">
+            <script>
+                window.location.href = '../Vista/login.jsp';
+            </script>
+        </c:if>
         <div>
             <div class="d-flex align-items-start">
                 <div class="nav flex-column nav-pills p-3 col-2 d-flex justify-content-between vh-100 shadow" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="background-color: rgb(39, 49, 53); position: fixed;">
@@ -54,7 +62,7 @@
                             <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" class="rounded-circle" alt="..." width="100" height="100">
                         </div>
                         <div>
-                            <h4 class="text-center text-white">Administrador</h4>
+                            <h4 class="text-center text-white"><c:out value="${usuario.getAppat()} ${usuario.getApmat()}, ${usuario.getNombre()}"/></h4>
                         </div>
                     </div>
                     
@@ -69,7 +77,7 @@
                     <hr class="text-white">
                     
                     <div class="text-center">
-                        <a href="login.jsp" class="text-white" style="text-decoration: none;"><i class='bx bx-log-out me-2'></i>Cerrar Sesión</a>
+                        <a href="../srvIniciarSesion?accion=cerrar" class="text-white" style="text-decoration: none;"><i class='bx bx-log-out me-2'></i>Cerrar Sesión</a>
                     </div>
                 </div>
                 <div class="col-2"></div>

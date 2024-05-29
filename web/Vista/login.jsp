@@ -9,7 +9,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
         <link rel="icon" href="../Imagenes/Orva_Viajes_logo.png">
-        <title>Login</title>
+        <title>Login | Orva Viajes</title>
     </head>
     <body style="background-color: rgb(21, 37, 58);" >
         <div class="d-flex justify-content-between row align-items-center mt-5" style="width: 100%;">
@@ -18,21 +18,21 @@
             </div>
             <div class="container bg-light col-4 p-5 rounded me-5 shadow">
                 <h1 class="text-center mb-4">Login</h1>
-                <form method="post">
+                <form method="post" action="../srvIniciarSesion?accion=verificar">
                     <div class="row mb-3">
                         <div>
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" name="username" class="form-control">
+                            <label for="username">Correo:</label>
+                            <input type="text" id="username" name="txtCorreo" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-5">
                         <div>
                             <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" class="form-control">
+                            <input type="password" id="password" name="txtPassword" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <a href="index.jsp" class="btn btn-primary" id=btnLogin>Ingresar</a>
+                        <button class="btn btn-lg btn-primary" type="submit">Inicia Sesion</button>
                     </div>
                 </form>
             </div>

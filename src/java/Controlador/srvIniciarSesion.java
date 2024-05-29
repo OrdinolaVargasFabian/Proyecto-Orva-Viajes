@@ -5,12 +5,62 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import DAO.DAOClientes;
+import Modelo.DTOCliente;
 
 public class srvIniciarSesion extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+        String accion = request.getParameter("accion");
+        try{
+            if(accion!=null){
+                switch(accion){
+                    case "verificar": VerificarLogin(request,response); break;
+                    case "cerrar": CerrarSesion(request,response); break;
+                    default: response.sendRedirect("Vista/login.jsp");
+                   }                             
+            }else{
+               response.sendRedirect("Vista/login.jsp");
+            }                
+        }catch(Exception ex){
+            System.out.println("ERROR.."+ex.getMessage());
+        } 
+    }
+    
+    private void VerificarLogin(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            HttpSession sesion;
+            DAOClientes dao = new DAOClientes();
+
+            String correo = request.getParameter("txtCorreo");
+            String contra = request.getParameter("txtPassword");
+            DTOCliente user = dao.ValidarSesion(correo, contra);
+
+            if (user != null) {
+                sesion = request.getSession();
+                sesion.setAttribute("user", user);
+                response.sendRedirect("Vista/index.jsp");
+                this.getServletConfig().getServletContext().getRequestDispatcher("/Vista/menu.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("Vista/login.jsp");
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR al verificar sesión..."+ex.getMessage());
+        }
+    }
+    
+    private void CerrarSesion(HttpServletRequest request, HttpServletResponse response){
+        try{
+            HttpSession sesion = request.getSession();
+            sesion.setAttribute("user",null);
+            sesion.invalidate();
+            response.sendRedirect("Vista/login.jsp");
+        }catch(Exception ex){
+            System.out.println("ERROR al cerrar sesion..."+ex.getMessage());
+       }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

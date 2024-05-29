@@ -23,7 +23,6 @@ public class RegistrarCliente extends HttpServlet {
         String fechaNacimiento = request.getParameter("fechaNacimiento");
         int telefono = Integer.parseInt(request.getParameter("telefono"));
         String genero = request.getParameter("genero");
-        String estado = request.getParameter("estado");
 
         // Crear el objeto DTOCliente
         DTOCliente cliente = new DTOCliente();
@@ -32,7 +31,6 @@ public class RegistrarCliente extends HttpServlet {
         cliente.setFechaNacimiento(fechaNacimiento);
         cliente.setTelefono(telefono);
         cliente.setGenero(genero);
-        cliente.setEstado(estado);
 
         // Llamar al método AgregarCliente del DAO
         boolean agregado = daoClientes.AgregarCliente(cliente);

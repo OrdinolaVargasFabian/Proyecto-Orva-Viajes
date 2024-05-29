@@ -3,16 +3,19 @@ package Modelo;
 public class DTOCliente {
 
     private int id;
+    private String appat;
+    private String apmat;
     private String nombre;
     private int dni;
     private String fechaNacimiento;
     private int telefono;
     private String genero;
-    private String estado;
+    private int estado;
+    private String correo;
+    private String contra;
 
     //Constructor
-    public DTOCliente() {
-    }
+    public DTOCliente() {}
     
     // Getters y setters
 
@@ -22,6 +25,22 @@ public class DTOCliente {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public String getAppat() {
+        return appat;
+    }
+
+    public void setAppat(String appat) {
+        this.appat = appat;
+    }
+
+    public String getApmat() {
+        return apmat;
+    }
+
+    public void setApmat(String apmat) {
+        this.apmat = apmat;
     }
 
     public String getNombre() {
@@ -64,14 +83,27 @@ public class DTOCliente {
         this.genero = genero;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
-
-   
     
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getContra() {
+        return contra;
+    }
+
+    public void setContra(String contra) {
+        this.contra = contra;
+    }
 }

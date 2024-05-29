@@ -11,4 +11,5 @@ public interface CRUDClientes {
     boolean AgregarCliente(DTOCliente cliente); // READ
     boolean ActualizarCliente(DTOCliente cliente); //UPDATE
     boolean EliminarCliente(int id); // DELETE
+    DTOCliente ValidarSesion(String correo, String contra);
 }
