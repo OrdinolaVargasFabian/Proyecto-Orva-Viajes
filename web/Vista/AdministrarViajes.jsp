@@ -51,8 +51,20 @@
                         </td>
                         <td class="text-center">${rutas.getFechaSalida()}  ${rutas.getHoraSalida()}</td>
                         <td class="text-center">${rutas.getFechaLlegada()}  ${rutas.getHoraLlegada()}</td>
-                        <td class="text-center">${rutas.getOrigen()}</td>
-                        <td class="text-center">${rutas.getDestino()}</td>
+                        <td class="text-center">
+                            <c:forEach var="origen" items="${listaLugares}" varStatus="contador">
+                                <c:if test="${contador.index == (rutas.getOrigen()-1)}">
+                                    ${origen.getNombre()}
+                                </c:if>
+                            </c:forEach>
+                        </td>
+                        <td class="text-center">
+                            <c:forEach var="destino" items="${listaLugares}" varStatus="contador">
+                                <c:if test="${contador.index == (rutas.getDestino()-1)}">
+                                    ${destino.getNombre()}
+                                </c:if>
+                            </c:forEach>
+                        </td>
                         <td class="text-center">${rutas.getPrecio()}</td>
                         <td class="text-center">${rutas.getBoletosRestantes()}</td>
                         <td class="text-center">

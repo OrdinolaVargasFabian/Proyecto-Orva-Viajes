@@ -47,9 +47,11 @@
                             <label for="slctOrigenVi">Lugar de Salida</label>
                             <select name="slctOrigen" id="slctOrigenVi" class="form-select">
                                 <option value="">[Seleccione]</option>
-                                <option value="1">Lugar 1</option>
-                                <option value="2">Lugar 2</option>
-                                <option value="3">Lugar 3</option>
+                                <c:forEach var="origen" items="${listaLugares}">
+                                    <option value="${origen.getId()}">
+                                        ${origen.getNombre()}
+                                    </option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
@@ -66,9 +68,11 @@
                             <label for="slctDestinoVi">Lugar de Llegada</label>
                             <select name="slctDestino" id="slctDestinoVi" class="form-select">
                                 <option value="">[Seleccione]</option>
-                                <option value="1">Lugar 1</option>
-                                <option value="2">Lugar 2</option>
-                                <option value="3">Lugar 3</option>
+                                <c:forEach var="destino" items="${listaLugares}">
+                                    <option value="${destino.getId()}">
+                                        ${destino.getNombre()}
+                                    </option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>

@@ -154,3 +154,13 @@ function validarFormViajes() {
     }
     return true;
 }
+
+function listarLugares() {
+    $.ajax({
+        url: '../srvObtenerLugares',
+        type: 'POST',
+        success: function (response) {
+            console.log('Exito listar lugares');
+        }
+    });
+}

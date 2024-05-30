@@ -11,6 +11,8 @@
     $(document).ready(function () {
         obtenerChoferes();
         obtenerViajes();
+        
+        listarLugares();
     });
 </script>
 </body>

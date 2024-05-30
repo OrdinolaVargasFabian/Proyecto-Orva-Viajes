@@ -17,7 +17,7 @@
                 <select name="slctChofer" id="slctChoferViEdit" class="form-select">
                     <option value="">[Seleccione]</option>
                     <c:forEach var="choferDisponible" items="${listaChoferes}">
-                        <option value="${choferDisponible.getId()}">
+                        <option value="${choferDisponible.getId()}" <c:if test="${choferDisponible.getId() == detalleRuta.getIdChofer()}">selected</c:if>>
                             ${choferDisponible.getAppat()} ${choferDisponible.getApmat()}, ${choferDisponible.getNombre()}
                         </option>
                     </c:forEach>
@@ -37,9 +37,11 @@
                 <label for="slctOrigenViEdit">Lugar de Salida</label>
                 <select name="slctOrigen" id="slctOrigenViEdit" class="form-select">
                     <option value="">[Seleccione]</option>
-                    <option value="1">Lugar 1</option>
-                    <option value="2">Lugar 2</option>
-                    <option value="3">Lugar 3</option>
+                    <c:forEach var="origen" items="${listaLugares}">
+                        <option value="${origen.getId()}" <c:if test="${origen.getId() == detalleRuta.getOrigen()}">selected</c:if>>
+                            ${origen.getNombre()}
+                        </option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
@@ -56,9 +58,11 @@
                 <label for="slctDestinoViEdit">Lugar de Llegada</label>
                 <select name="slctDestino" id="slctDestinoViEdit" class="form-select">
                     <option value="">[Seleccione]</option>
-                    <option value="1">Lugar 1</option>
-                    <option value="2">Lugar 2</option>
-                    <option value="3">Lugar 3</option>
+                    <c:forEach var="destino" items="${listaLugares}">
+                        <option value="${destino.getId()}" <c:if test="${destino.getId() == detalleRuta.getDestino()}">selected</c:if>>
+                            ${destino.getNombre()}
+                        </option>
+                    </c:forEach>
                 </select>
             </div>
         </div>
