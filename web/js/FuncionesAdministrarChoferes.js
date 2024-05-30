@@ -5,7 +5,7 @@ function obtenerChoferes() {
         success: function (response) {
             console.log('Exito ObtenerChoferes');
 
-          $('#datatable-viaje').DataTable({
+          $('#datatable-chofer').DataTable({
                 order: [[0, 'desc']],
                 dom: '<"row mx-2"' +
                         '<"col-md-2"<"me-3"l>>' +
