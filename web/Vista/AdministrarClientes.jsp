@@ -6,7 +6,7 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mdlAgregarCliente">
                 <i class='bx bx-plus me-2'></i>Registrar
             </button>
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" onclick="window.location.reload();">
                 <i class='bx bx-refresh me-2'></i>Refrescar
             </button>
         </div>
@@ -28,15 +28,25 @@
                 </tr>
             </thead>
             <tbody>
+                <% 
+                    DAO.DAOClientes daoClientes = new DAO.DAOClientes();
+                    java.util.LinkedList<Modelo.DTOCliente> lista = daoClientes.ListarClientes();
+                    for(Modelo.DTOCliente cliente : lista) {
+                %>
                 <tr>
-                    <td class="text-center">1</td>
-                    <td class="text-center">Vargas Santos, John</td>
-                    <td class="text-center">123456789</td>
-                    <td class="text-center">1990-01-01</td>
-                    <td class="text-center">963852741</td>
-                    <td class="text-center">M</td>
-                    <td class="text-center"></td>
+                    <td class="text-center"><%= cliente.getId() %></td>
+                    <td class="text-center"><%= cliente.getAppat() %> <%= cliente.getApmat() %>, <%= cliente.getNombre() %></td>
+                    <td class="text-center"><%= cliente.getDni() %></td>
+                    <td class="text-center"><%= cliente.getFechaNacimiento() %></td>
+                    <td class="text-center"><%= cliente.getTelefono() %></td>
+                    <td class="text-center"><%= cliente.getGenero() %></td>
+                    <td class="text-center">
+                        <!-- Agregar acciones como editar y eliminar -->
+                        <a href="EditarCliente.jsp?id=<%= cliente.getId() %>" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="EliminarCliente?id=<%= cliente.getId() %>" class="btn btn-danger btn-sm">Eliminar</a>
+                    </td>
                 </tr>
+                <% } %>
             </tbody>
         </table>
     </div>
