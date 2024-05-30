@@ -14,36 +14,93 @@ $(document).ready(function () {
             search: '',
             searchPlaceholder: 'Search..'
         },
-        buttons: [
-            {
-                extend: 'excel',
-                text: '<i class="bx bxs-file-export me-2"></i>Excel',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success mx-3 rounded',
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7] //columnas de Cliente
-                }
-            },
-            {
-                extend: 'pdf',
-                text: '<i class="bx bxs-file-pdf me-2"></i>PDF',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger me-3 rounded',
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7] //columnass de Cliente 
-                }
-            },
-            {
-                extend: 'print',
-                text: '<i class="bx bxs-printer me-2"></i>Imprimir',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info text-white rounded',
-                exportOptions: {
-                    columns: [0, 1, 2, 3, 4, 5, 6, 7, 8] // Ajusta las columnas según tu tabla de clientes
-                }
-            }
-        ],
+        buttons: [],
         responsive: true
     });
 });
+
+function agregarCliente() {
+    if (validarFormCliente()) {
+        //Se obtiene el ID del usuario actual mediante JQuery al input hidden con el id "idUsuario" en menu.jsp
+        var id = $('#idUsuario').val();
+        $.ajax({
+            type: 'POST',
+            data: $('#frmAddCliente').serialize(), // Convierte los datos del formulario a application/x-www-form-urlencoded
+            url: '../RegistrarCliente?accion=agregar&id=' + id,
+            beforeSend: function () {
+                swal.fire({
+                    title: 'ESPERA',
+                    html: 'Procesando...',
+                    didOpen: () => {
+                        swal.showLoading()
+                    }
+                })
+            },
+            success: function (data, textStatus, jqXHR) {
+                document.getElementById('frmAddCliente').reset();
+                swal.fire('CORRECTO', 'Se agregó el nuevo cliente', 'success').then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload();
+                    }
+                });
+            }
+        });
+    }
+}
+
+function eliminarCliente(id) {
+    $.ajax({
+        type: 'POST',
+        url: '../' + id,
+        beforeSend: function () {
+            swal.fire({
+                title: 'ESPERA',
+                html: 'Procesando...',
+                didOpen: () => {
+                    swal.showLoading()
+                }
+            })
+        },
+        success: function (data, textStatus, jqXHR) {
+            swal.fire('CORRECTO', 'Se eliminó el cliente', 'success').then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+            });
+        }
+    });
+}
+
+function validarFormCliente() {
+    var form = document.getElementById('frmAddCliente');
+    if (form.appat.value == "") {
+        swal.fire('ERROR', 'El apellido paterno es requerido', 'error');
+        return false;
+    }
+    if (form.apmat.value == "") {
+        swal.fire('ERROR', 'El apellido materno es requerido', 'error');
+        return false;
+    }
+    if (form.nombre.value == "") {
+        swal.fire('ERROR', 'La nombre es requerida', 'error');
+        return false;
+    }
+    if (form.dni.value == "") {
+        swal.fire('ERROR', 'La DNI es requerida', 'error');
+        return false;
+    }
+    if (form.fechaNacimiento.value == "") {
+        swal.fire('ERROR', 'La fecha de nacimiento es requerida', 'error');
+        return false;
+    }
+    if (form.telefono.value == "") {
+        swal.fire('ERROR', 'El telefono es requerida', 'error');
+        return false;
+    }
+    if (form.genero.value == "") {
+        swal.fire('ERROR', 'El genero es requerido', 'error');
+        return false;
+    }
+    return true;
+}
 

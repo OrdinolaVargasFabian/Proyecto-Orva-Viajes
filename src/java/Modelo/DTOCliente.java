@@ -1,5 +1,7 @@
 package Modelo;
 
+import java.sql.Date;
+
 public class DTOCliente {
     private int id;
     private String appat;
@@ -9,6 +11,8 @@ public class DTOCliente {
     private String fechaNacimiento;
     private int telefono;
     private String genero;
+    private int creador;
+    private Date fechaCreacion;
 
     // Getters y setters
 
@@ -74,5 +78,21 @@ public class DTOCliente {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public int getCreador() {
+        return creador;
+    }
+
+    public void setCreador(int creador) {
+        this.creador = creador;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 }

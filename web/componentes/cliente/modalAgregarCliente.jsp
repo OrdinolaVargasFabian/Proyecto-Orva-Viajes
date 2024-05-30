@@ -1,13 +1,21 @@
 <!-- modalAgregarCliente.jsp -->
 <div class="modal fade" id="mdlAgregarCliente" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <form action="RegistrarCliente" method="post">
+        <div class="modal-content p-4">
+            <form id="frmAddCliente" class="row g-3" onsubmit="return false">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Registrar Cliente</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="appat" class="form-label">Apellido Paterno</label>
+                        <input type="text" class="form-control" id="appat" name="appat" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="apmat" class="form-label">Apellido Materno</label>
+                        <input type="text" class="form-control" id="apmat" name="apmat" required>
+                    </div>
                     <div class="mb-3">
                         <label for="nombre" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -34,8 +42,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <button onclick="agregarCliente()" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</button>
                 </div>
             </form>
         </div>

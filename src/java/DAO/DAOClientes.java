@@ -11,7 +11,7 @@ public class DAOClientes extends Conexion implements CRUDClientes {
     @Override
     public LinkedList<DTOCliente> ListarClientes() {
         LinkedList<DTOCliente> Lista = new LinkedList<>();
-        String consulta = "SELECT * FROM clientes";
+        String consulta = "SELECT * FROM cliente";
         
         try (PreparedStatement ps = con.prepareStatement(consulta);
              ResultSet rs = ps.executeQuery()) {
@@ -38,7 +38,7 @@ public class DAOClientes extends Conexion implements CRUDClientes {
     @Override
     public DTOCliente ObtenerCliente(int id) {
         DTOCliente cliente = null;
-        String consulta = "SELECT * FROM clientes WHERE idCliente = ?";
+        String consulta = "SELECT * FROM cliente WHERE idCliente = ?";
         
         try (PreparedStatement ps = con.prepareStatement(consulta)) {
             ps.setInt(1, id);
@@ -64,7 +64,7 @@ public class DAOClientes extends Conexion implements CRUDClientes {
 
     @Override
     public boolean AgregarCliente(DTOCliente cliente) {
-        String consulta = "INSERT INTO clientes (appat, apmat, nombre, dni, fechaNacimiento, telefono, genero) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String consulta = "INSERT INTO cliente (appat, apmat, nombre, dni, fechaNacimiento, telefono, genero, creador, fechaCreacion) VALUES (?, ?, ?, ?, ?, ?, ?, ?, now())";
         try (PreparedStatement ps = con.prepareStatement(consulta)) {
             ps.setString(1, cliente.getAppat());
             ps.setString(2, cliente.getApmat());
@@ -73,6 +73,7 @@ public class DAOClientes extends Conexion implements CRUDClientes {
             ps.setDate(5, Date.valueOf(cliente.getFechaNacimiento()));
             ps.setInt(6, cliente.getTelefono());
             ps.setString(7, cliente.getGenero());
+            ps.setInt(8, cliente.getCreador());
             int rowsInserted = ps.executeUpdate();
             return rowsInserted > 0;
         } catch (Exception ex) {
@@ -83,7 +84,7 @@ public class DAOClientes extends Conexion implements CRUDClientes {
 
     @Override
     public boolean ActualizarCliente(DTOCliente cliente) {
-        String consulta = "UPDATE clientes SET appat = ?, apmat = ?, nombre = ?, dni = ?, fechaNacimiento = ?, telefono = ?, genero = ? WHERE idCliente = ?";
+        String consulta = "UPDATE cliente SET appat = ?, apmat = ?, nombre = ?, dni = ?, fechaNacimiento = ?, telefono = ?, genero = ? WHERE idCliente = ?";
         try (PreparedStatement ps = con.prepareStatement(consulta)) {
             ps.setString(1, cliente.getAppat());
             ps.setString(2, cliente.getApmat());
@@ -103,7 +104,7 @@ public class DAOClientes extends Conexion implements CRUDClientes {
 
     @Override
     public boolean EliminarCliente(int id) {
-        String consulta = "DELETE FROM clientes WHERE idCliente = ?";
+        String consulta = "DELETE FROM cliente WHERE idCliente = ?";
         try (PreparedStatement ps = con.prepareStatement(consulta)) {
             ps.setInt(1, id);
             int rowsDeleted = ps.executeUpdate();

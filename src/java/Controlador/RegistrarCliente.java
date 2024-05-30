@@ -40,6 +40,8 @@ public class RegistrarCliente extends HttpServlet {
         cliente.setGenero(request.getParameter("genero"));
         if (editar) {
             cliente.setId(Integer.parseInt(request.getParameter("idCliente")));
+        } else {
+            cliente.setCreador(Integer.parseInt(request.getParameter("id")));
         }
     }
 
