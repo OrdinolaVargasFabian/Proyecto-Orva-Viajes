@@ -49,8 +49,11 @@
                         </td>
                         <td class="text-center">
                             <div class="d-inline-block text-nowrap">
-                                <a href="../srvControladorViajes?accion=editar&idChofer=${choferes.getId()}" type='button' class='btn btn-icon btn-outline-success  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='bx bxs-edit'></i></a>
-                                <a href="../srvControladorViajes?accion=eliminar&idChofer=${choferes.getId()}" type='button' class='btn btn-icon btn-outline-danger  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='tf-icons bx bxs-trash'></i></a>
+                                <a href="../ControladorChofer?accion=editar&idChofer=${choferes.getId()}" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></a>
+                               <%-- 1 <a href="../srvControladorViajes?accion=editar&idChofer=${choferes.getId()}" type='button' class='btn btn-icon btn-outline-success  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='bx bxs-edit'></i></a> --%>
+                               <%--<a href="javascript:eliminarChoferes(${choferes.getId()})" type='button' class='btn btn-icon btn-outline-danger me-2'><i class='tf-icons bx bxs-trash'></i></a>--%>
+                                <a href="../ControladorChofer?accion=eliminar&idChofer=${choferes.getId()}" class='btn btn-icon btn-outline-danger  me-2'><i class='tf-icons bx bxs-trash'></i></a>
+                                <%--1<a href="../ControladorChofer?accion=eliminar&idChofer=${choferes.getId()}" type='button' class='btn btn-icon btn-outline-danger  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarChofer"><i class='tf-icons bx bxs-trash'></i></a>--%>
                             </div>
                         </td>
                     </tr>

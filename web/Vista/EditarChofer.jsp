@@ -2,7 +2,8 @@
 <div class="m-4 p-5 bg-light shadow rounded">
     <h3 class="text-center">EDITAR CHOFER</h3>
     <hr class="mb-5">
-    <form id="frmEditChofer" class="row g-3" method="post">
+    <form id="frmEditChofer" class="row g-3" method="post" action="../ControladorChofer?accion=actualizar"">
+        <input type="hidden" name="idChofer" value="${detalleChofer.getId()}">
         <div class="row mb-3">
             <div class="col-6">
                 <label for="appat">Apellido Paterno</label>
@@ -33,12 +34,25 @@
                 <input type="date" name="txtVencLicencia" id="vencLicenciaCh" class="form-control">
             </div>
         </div>
+        
         <div class="row mb-3">
             <div class="col-6">
                 <label for="telefono">Telefono de Contacto</label>
                 <input type="text" name="txtTelefono" id="telefonoCh" class="form-control">
             </div>
+            <div class="col-6">
+                <label for="disponibilidad">Disponibilidad</label>
+                <input type="text" name="txtDisponibilidad" id="disponibilidadCh" class="form-control">
+            </div>
         </div>
+        
+        <div class="row mb-3">
+            <div class="col-6">
+                <label for="estado">Estado</label>
+                <input type="text" name="txtEstado" id="estadoCh" class="form-control">
+            </div>
+        </div>
+               
         <div class="d-flex">
             <div class="ms-auto">
                 <button type="submit" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Guardar Cambios</button>

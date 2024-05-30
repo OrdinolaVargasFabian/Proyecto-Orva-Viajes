@@ -13,6 +13,7 @@
                 </div>
                 <hr style="padding-bottom: 20px;">
                 <form id="frmAddChofer" class="row g-3" onsubmit="return false">
+                    <input type="hidden" name="txtAccion">
                     <div class="row mb-3">
                         <div class="col-6">
                             <label for="appat">Apellido Paterno</label>
@@ -39,24 +40,43 @@
                             <input type="text" name="licencia" id="licenciaCh" class="form-control">
                         </div>
                         <div class="col-6">
-                            <label for="vencLicencia">Fecha de Vencimiento de Licencia</label>
-                            <input type="date" name="vencLicencia" id="vencLicenciaCh" class="form-control">
+                            <label for="contratación">Fecha de Contratación</label>
+                            <input type="date" name="contratacion" id="contratacion" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
+                        <div class="col-6">                            
+                            <label for="vencLicencia">Vencimiento de Licencia</label>
+                            <input type="date" name="vencLicencia" id="vencLicenciaCh" class="form-control">
+                        </div>
                         <div class="col-6">
                             <label for="telefono">Telefono de Contacto</label>
-                            <input type="text" name="telefono" id="telefonoCh" class="form-control">
+                            <input type="text" name="telefono" id="telefonoCh" class="form-control">                                                             
                         </div>
-                    </div>
+                    </div>  
+                    <div class="row mb-3">
+                        <div class="col-6"> 
+                            <label for="disponibilidad">Disponibilidad</label>
+                            <input type="text" name="disponibilidad" id="disponibilidadCh" class="form-control">                                                        
+                        </div>
+                        <div class="col-6">
+                            <label for="estado">Estado</label>
+                            <input type="text" name="estado" id="estadoCh" class="form-control">                                                          
+                        </div>
+                    </div>    
+                   
+        
+    
                 </form>
                 <hr style="padding-bottom: 20px;">
                 <div class="d-flex">
                     <div class="ms-auto">
-                        <a href="#" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</a>
+                        <%--<a href="../ControladorChofer?accion=agregar&idChofer=${choferes.getId()}" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></a>--%>
+                        <%--<a href="../ControladorChofer?accion=agregar&idChofer=${choferes.getId()}" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</a>--%>
+                        <button onclick="agregarChofer()" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</button>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div>  
