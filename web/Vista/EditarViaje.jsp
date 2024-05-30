@@ -2,7 +2,8 @@
 <div class="m-4 p-5 bg-light shadow rounded">
     <h3 class="text-center">EDITAR RUTA DE VIAJE</h3>
     <hr class="mb-5">
-    <form id="frmEditViaje" class="row g-3" method="post">
+    <form id="frmEditViaje" class="row g-3" method="post" action="../srvControladorViajes?accion=actualizar">
+        <input type="hidden" name="idRuta" value="${detalleRuta.getId()}">
         <div class="row mb-3">
             <div class="col-6">
                 <label for="slctBusViEdit">Bus de Viaje</label>
@@ -26,11 +27,11 @@
         <div class="row mb-3">
             <div class="col">
                 <label for="txtFechaSalidaViEdit">Fecha de Salida</label>
-                <input type="date" name="txtFechaSalida" id="txtFechaSalidaViEdit" class="form-control">
+                <input type="date" name="txtFechaSalida" id="txtFechaSalidaViEdit" class="form-control" value="${detalleRuta.getFechaSalida()}">
             </div>
             <div class="col">
                 <label for="txtHoraSalidaViEdit">Hora de Salida</label>
-                <input type="time" name="txtHoraSalida" id="txtHoraSalidaViEdit" class="form-control">
+                <input type="time" name="txtHoraSalida" id="txtHoraSalidaViEdit" class="form-control" value="${detalleRuta.getHoraSalida()}">
             </div>
             <div class="col">
                 <label for="slctOrigenViEdit">Lugar de Salida</label>
@@ -45,11 +46,11 @@
         <div class="row mb-3">
             <div class="col">
                 <label for="txtFechaLlegadaViEdit">Fecha de Llegada</label>
-                <input type="date" name="txtFechaLlegada" id="txtFechaLlegadaViEdit" class="form-control">
+                <input type="date" name="txtFechaLlegada" id="txtFechaLlegadaViEdit" class="form-control" value="${detalleRuta.getFechaLlegada()}">
             </div>
             <div class="col">
                 <label for="txtHoraLlegadaViEdit">Hora de Llegada</label>
-                <input type="time" name="txtHoraLlegada" id="txtHoraLlegadaViEdit" class="form-control">
+                <input type="time" name="txtHoraLlegada" id="txtHoraLlegadaViEdit" class="form-control" value="${detalleRuta.getHoraLlegada()}">
             </div>
             <div class="col">
                 <label for="slctDestinoViEdit">Lugar de Llegada</label>
@@ -64,7 +65,7 @@
         <div class="row mb-3">
             <div class="col">
                 <label for="txtPreciVioEdit">Precio</label>
-                <input type="number" name="txtPrecio" id="txtPrecioViEdit" class="form-control" step="0.01" min="0">
+                <input type="number" name="txtPrecio" id="txtPrecioViEdit" class="form-control" step="0.01" min="0" value="${detalleRuta.getPrecio()}">
             </div>
             <div class="col">
                 <label for="txtBoletosEdit">Boletos Disponibles</label>

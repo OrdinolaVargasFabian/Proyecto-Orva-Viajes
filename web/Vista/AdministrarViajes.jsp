@@ -3,7 +3,7 @@
     <div class="mb-3">
         <hr>
         <div class="d-flex justify-content-between">
-            <button type="button" class="btn btn-primary" onclick="mostrarFormAgregarViaje()"><i class='bx bx-plus me-2'></i>Programar</button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='bx bx-plus me-2'></i>Programar</button>
             <button type="button" class="btn btn-primary"><i class='bx bx-refresh me-2'></i>Refrescar</button>
         </div>
         <hr>
@@ -57,8 +57,8 @@
                         <td class="text-center">${rutas.getBoletosRestantes()}</td>
                         <td class="text-center">
                             <div class="d-inline-block text-nowrap">
-                                <button onclick="mostrarFormEditarViaje(${rutas.getId()})" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></button>
-                                <a href="../srvControladorViajes?accion=eliminar&idRuta=${rutas.getId()}" type='button' class='btn btn-icon btn-outline-danger me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='tf-icons bx bxs-trash'></i></a>
+                                <a href="../srvControladorViajes?accion=editar&idRuta=${rutas.getId()}" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></a>
+                                <a href="javascript:eliminarViaje(${rutas.getId()})" type='button' class='btn btn-icon btn-outline-danger me-2'><i class='tf-icons bx bxs-trash'></i></a>
                             </div>
                         </td>
                     </tr>

@@ -68,20 +68,24 @@ public class DAORutas extends Conexion implements CRUDRutas{
 
     @Override
     public boolean AgregarRuta(DTORuta ruta) {
-        String consulta = "INSERT INTO ruta_viaje VALUES (?,?,?,?,?,?,?,?,?,?,?,1)";
+        String consulta = "INSERT INTO ruta_viaje (`idBus`, `idChofer`, "
+                + "`fechaSalida`, `horaSalida`, `origen`, `fechaLlegada`, "
+                + "`horaLlegada`, `destino`, `precio`, `boletosRestantes`, "
+                + "`creador`, `fechaCreacion`, `estado`) "
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?,now(),1)";
         try {
             ps = con.prepareStatement(consulta);
-            ps.setInt(1, ruta.getId());
-            ps.setInt(2, ruta.getIdBus());
-            ps.setInt(3, ruta.getIdChofer());
-            ps.setDate(4, ruta.getFechaSalida());
-            ps.setTime(5, ruta.getHoraSalida());
-            ps.setInt(6, ruta.getOrigen());
-            ps.setDate(7, ruta.getFechaLlegada());
-            ps.setTime(8, ruta.getHoraLlegada());
-            ps.setInt(9, ruta.getDestino());
-            ps.setDouble(10, ruta.getPrecio());
-            ps.setInt(11, ruta.getBoletosRestantes());
+            ps.setInt(1, ruta.getIdBus());
+            ps.setInt(2, ruta.getIdChofer());
+            ps.setDate(3, ruta.getFechaSalida());
+            ps.setTime(4, ruta.getHoraSalida());
+            ps.setInt(5, ruta.getOrigen());
+            ps.setDate(6, ruta.getFechaLlegada());
+            ps.setTime(7, ruta.getHoraLlegada());
+            ps.setInt(8, ruta.getDestino());
+            ps.setDouble(9, ruta.getPrecio());
+            ps.setInt(10, ruta.getBoletosRestantes());
+            ps.setInt(11, ruta.getCreador());
             ps.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -92,22 +96,23 @@ public class DAORutas extends Conexion implements CRUDRutas{
     @Override
     public boolean EditarRuta(DTORuta ruta) {
         String consulta = "UPDATE ruta_viaje SET idBus = ?, idChofer = ?, "
-                + "fechaSalida = ?, horaSalida = ?,origen = ?, fechaLlegada = ?, "
-                + "horaLlegada = ?, destino = ?, precio = ?, boletosRestantes = ?, "
-                + "estado = ? WHERE idViaje = ?";
+                + "fechaSalida = ?, horaSalida = ?, origen = ?, fechaLlegada = ?, "
+                + "horaLlegada = ?, destino = ?, precio = ?, boletosRestantes = ? "
+                + "WHERE idViaje = ?";
         try {
             ps = con.prepareStatement(consulta);
-            ps.setInt(1, ruta.getId());
-            ps.setInt(2, ruta.getIdBus());
-            ps.setInt(3, ruta.getIdChofer());
-            ps.setDate(4, ruta.getFechaSalida());
-            ps.setTime(5, ruta.getHoraSalida());
-            ps.setInt(6, ruta.getOrigen());
-            ps.setDate(7, ruta.getFechaLlegada());
-            ps.setTime(8, ruta.getHoraLlegada());
-            ps.setInt(9, ruta.getDestino());
-            ps.setDouble(10, ruta.getPrecio());
-            ps.setInt(11, ruta.getBoletosRestantes());
+            
+            ps.setInt(1, ruta.getIdBus());
+            ps.setInt(2, ruta.getIdChofer());
+            ps.setDate(3, ruta.getFechaSalida());
+            ps.setTime(4, ruta.getHoraSalida());
+            ps.setInt(5, ruta.getOrigen());
+            ps.setDate(6, ruta.getFechaLlegada());
+            ps.setTime(7, ruta.getHoraLlegada());
+            ps.setInt(8, ruta.getDestino());
+            ps.setDouble(9, ruta.getPrecio());
+            ps.setInt(10, ruta.getBoletosRestantes());
+            ps.setInt(11, ruta.getId());
             ps.executeUpdate();
         } catch (Exception ex) {
             ex.printStackTrace();

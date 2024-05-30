@@ -9,7 +9,7 @@
                 </div>
 
                 <div class="text-center mb-4">
-                    <h3 id="labelTituloModalViaje">Agregar</h3>
+                    <h3 id="labelTituloModalViaje">AGREGAR</h3>
                 </div>
                 <hr style="padding-bottom: 20px;">
                 <form id="frmAddViaje" class="row g-3" onsubmit="return false">
@@ -86,7 +86,7 @@
                 <hr style="padding-bottom: 20px;">
                 <div class="d-flex">
                     <div class="ms-auto">
-                        <button onclick="validarAgregarEditar()" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</button>
+                        <button onclick="agregarViaje()" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</button>
                     </div>
                 </div>
             </div>

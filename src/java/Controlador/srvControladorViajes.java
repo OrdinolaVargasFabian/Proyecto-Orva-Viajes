@@ -20,51 +20,70 @@ public class srvControladorViajes extends HttpServlet {
     
     DTORuta ruta = new DTORuta();
     
-    public void LeerDatos(HttpServletRequest request, HttpServletResponse response){
+    public void LeerDatos(HttpServletRequest request, HttpServletResponse response, boolean editar){
         ruta.setIdBus(Integer.parseInt(request.getParameter("slctBus")));
         ruta.setIdChofer(Integer.parseInt(request.getParameter("slctChofer")));
         ruta.setFechaSalida(Date.valueOf(request.getParameter("txtFechaSalida")));
+        //Valida si es necesario agregar segundos o no
+        String agregarSeg = editar ? "" : ":00";
         //Se modifica para adaptarlo al formato time de sql
-        String horaSalida = request.getParameter("txtHoraSalida") + ":00";
+        String horaSalida = request.getParameter("txtHoraSalida") + agregarSeg;
         ruta.setHoraSalida(Time.valueOf(horaSalida));
         ruta.setOrigen(Integer.parseInt(request.getParameter("slctOrigen")));
         ruta.setFechaLlegada(Date.valueOf(request.getParameter("txtFechaLlegada")));
         //Se modifica para adaptarlo al formato time de sql
-        String horaLlegada = request.getParameter("txtHoraLlegada") + ":00";
+        String horaLlegada = request.getParameter("txtHoraLlegada") + agregarSeg;
         ruta.setHoraLlegada(Time.valueOf(horaLlegada));
         ruta.setDestino(Integer.parseInt(request.getParameter("slctDestino")));
         ruta.setPrecio(Double.parseDouble(request.getParameter("txtPrecio")));
         ruta.setBoletosRestantes(Integer.parseInt(request.getParameter("txtBoletos")));
+        if (editar) {
+            ruta.setId(Integer.parseInt(request.getParameter("idRuta")));
+        } else {
+            ruta.setCreador(Integer.parseInt(request.getParameter("id")));
+        }
     }  
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         DAORutas dao = new DAORutas();
         
+        //Dependiendo del valor de accion que se puso junto al url del servlet sera lo que obtenga
         String action = request.getParameter("accion");
         
+        //Obtiene los datos para precargarlos en el form y ser editados
         if (action.equalsIgnoreCase("editar")) {
-            int idRuta = Integer.parseInt(request.getParameter("id"));
+            int idRuta = Integer.parseInt(request.getParameter("idRuta"));
             ruta = dao.ObtenerRuta(idRuta);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-
             HttpSession session = request.getSession();
             session.setAttribute("detalleRuta", ruta);
-        } else if (action.equalsIgnoreCase("actualizar")) {
-            LeerDatos(request, response);
+            response.sendRedirect("Vista/EditarViaje.jsp");
+        }
+        //Realiza la modificacion en la BD
+        else if (action.equalsIgnoreCase("actualizar")) {
+            LeerDatos(request, response, true);
             dao.EditarRuta(ruta);
-        } else if (action.equalsIgnoreCase("listar")) {
+            response.sendRedirect("Vista/AdministrarViajes.jsp");
+        }
+        //Obtiene todos los registros en la tabla
+        else if (action.equalsIgnoreCase("listar")) {
             LinkedList<DTORuta> listaRutas = dao.ListarRutas();
             HttpSession session = request.getSession();
             session.setAttribute("listaRutas", listaRutas);
-        } else if (action.equalsIgnoreCase("agregar")) {
-            LeerDatos(request, response);
+            
+            RequestDispatcher vista = request.getRequestDispatcher("Vista/AdministrarViajes.jsp");
+            vista.forward(request, response);
+        }
+        //Realiza la insercion de nuevo registro en la BD
+        else if (action.equalsIgnoreCase("agregar")) {
+            LeerDatos(request, response, false);
             dao.AgregarRuta(ruta);
         }
-
-        RequestDispatcher vista = request.getRequestDispatcher("Vista/AdministrarViajes.jsp");
-        vista.forward(request, response);
+        //Cambia el estado para que no figure al obtener todos los registros de la tabla
+        else if (action.equalsIgnoreCase("eliminar")) {
+            int idRuta = Integer.parseInt(request.getParameter("idRuta"));
+            dao.EliminarRuta(idRuta);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

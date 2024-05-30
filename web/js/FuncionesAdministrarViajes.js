@@ -1,39 +1,3 @@
-//DATATABLE BUSES
-
-//DATATABLE CHOFERES
-function obtenerChoferes() {
-    $.ajax({
-        url: '../ControladorChofer?accion=listar',
-        type: 'POST',
-        success: function (response) {
-            console.log('Exito ObtenerChoferes');
-
-            var dtTablaChoferes = $('#datatable-chofer');
-            dtTablaChoferes.DataTable({
-                order: [[0, 'desc']],
-                dom:
-                        '<"row mx-2"' +
-                        '<"col-md-2"<"me-3"l>>' +
-                        '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"fB>>' +
-                        '>t' +
-                        '<"row mx-2"' +
-                        '<"col-sm-12 col-md-6"i>' +
-                        '<"col-sm-12 col-md-6"p>' +
-                        '>',
-                language: {
-                    sLengthMenu: '_MENU_',
-                    search: '',
-                    searchPlaceholder: 'Search..'
-                },
-                buttons: [],
-                responsive: false
-            });
-        }
-    });
-}
-//DATATABLE CLIENTES
-
-//DATATABLE RUTA VIAJES
 function obtenerViajes() {
     $.ajax({
         url: '../srvControladorViajes?accion=listar',
@@ -91,52 +55,16 @@ function obtenerViajes() {
     });
 }
 
-var modalFormViaje = new bootstrap.Modal(document.getElementById('mdlAgregarViaje'));
-var viajeModalLabel = document.getElementById('labelTituloModalViaje');
 var formViaje = document.getElementById('frmAddViaje');
-
-function mostrarFormAgregarViaje() {
-    formViaje.reset();
-    viajeModalLabel.innerText = 'AGREGAR';
-    formViaje.txtAccion.value = 'agregar';
-    modalFormViaje.show();
-}
-
-function mostrarFormEditarViaje(id) {
-    formViaje.reset();
-    $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: '../srvControladorViajes?accion=editar&id='+id,
-            success: function (data, textStatus, jqXHR) {
-                formViaje.reset();
-                viajeModalLabel.innerText = 'EDITAR';
-                formViaje.txtAccion.value = 'editar';
-                
-                modalFormViaje.show();
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                console.log('Error: ' + errorThrown);
-            }
-        });
-}
-
-function validarAgregarEditar() {
-    if (formViaje.txtAccion.value == 'agregar') {
-        agregarViaje();
-    } else if (formViaje.txtAccion.value == 'editar') {
-        mostrarFormEditarViaje();
-    }
-}
 
 function agregarViaje() {
     if (validarFormViajes()) {
         //Se obtiene el ID del usuario actual mediante JQuery al input hidden con el id "idUsuario" en menu.jsp
-        var id = $('#idUsuario');
+        var id = $('#idUsuario').val();
         $.ajax({
             type: 'POST',
             data: $('#frmAddViaje').serialize(), // Convierte los datos del formulario a application/x-www-form-urlencoded
-            url: '../srvControladorViajes?accion=agregar&id='+id,
+            url: '../srvControladorViajes?accion=agregar&id=' + id,
             beforeSend: function () {
                 swal.fire({
                     title: 'ESPERA',
@@ -147,11 +75,39 @@ function agregarViaje() {
                 })
             },
             success: function (data, textStatus, jqXHR) {
-                swal.fire('CORRECTO', 'Se programó la nueva ruta de viaje', 'success');
                 document.getElementById('frmAddViaje').reset();
+                swal.fire('CORRECTO', 'Se programó la nueva ruta de viaje', 'success').then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload();
+                    }
+                });
             }
         });
     }
+}
+
+function eliminarViaje(id) {
+    $.ajax({
+        type: 'POST',
+        data: $('#frmAddViaje').serialize(), // Convierte los datos del formulario a application/x-www-form-urlencoded
+        url: '../srvControladorViajes?accion=eliminar&idRuta=' + id,
+        beforeSend: function () {
+            swal.fire({
+                title: 'ESPERA',
+                html: 'Procesando...',
+                didOpen: () => {
+                    swal.showLoading()
+                }
+            })
+        },
+        success: function (data, textStatus, jqXHR) {
+            swal.fire('CORRECTO', 'Se eliminó la ruta de viaje', 'success').then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                }
+            });
+        }
+    });
 }
 
 function validarFormViajes() {

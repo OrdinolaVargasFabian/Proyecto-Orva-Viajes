@@ -57,7 +57,7 @@
         <input type="hidden" name="idUsuario" id="idUsuario" value="${usuario.getIdUsuario()}">
         <div>
             <div class="d-flex align-items-start">
-                <div class="nav flex-column p-3 col-2 d-flex justify-content-between vh-100 shadow" style="background-color: rgb(39, 49, 53); position: fixed;">
+                <div class="nav flex-column p-3 col-2 d-flex justify-content-between min-vh-100 shadow" style="background-color: rgb(39, 49, 53); position: fixed;">
                     <div>
                         <div class="d-flex justify-content-center align-items-center my-4">
                             <img src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" class="rounded-circle" alt="..." width="100" height="100">
