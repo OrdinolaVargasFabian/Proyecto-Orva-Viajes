@@ -41,7 +41,7 @@ public class RegistrarCliente extends HttpServlet {
         if (editar) {
             cliente.setId(Integer.parseInt(request.getParameter("idCliente")));
         } else {
-            cliente.setCreador(Integer.parseInt(request.getParameter("id")));
+            cliente.setCreador(Integer.parseInt(request.getParameter("idCliente")));
         }
     }
 
