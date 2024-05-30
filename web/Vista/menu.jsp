@@ -54,6 +54,7 @@
                 window.location.href = '../Vista/login.jsp';
             </script>
         </c:if>
+        <input type="hidden" name="idUsuario" id="idUsuario" value="${usuario.getIdUsuario()}">
         <div>
             <div class="d-flex align-items-start">
                 <div class="nav flex-column p-3 col-2 d-flex justify-content-between vh-100 shadow" style="background-color: rgb(39, 49, 53); position: fixed;">

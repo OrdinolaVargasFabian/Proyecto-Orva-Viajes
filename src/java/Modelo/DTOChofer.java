@@ -13,6 +13,8 @@ public class DTOChofer {
     private Date fechaVencimientoLicencia;
     private int telefono;
     private int disponibilidad;
+    private int creador;
+    private Date fechaCreacion;
     private int estado;
 
     public DTOChofer() {}
@@ -103,5 +105,21 @@ public class DTOChofer {
 
     public void setEstado(int estado) {
         this.estado = estado;
+    }
+    
+    public int getCreador() {
+        return creador;
+    }
+
+    public void setCreador(int creador) {
+        this.creador = creador;
+    }
+
+    public Date getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 }

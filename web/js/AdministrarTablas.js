@@ -131,10 +131,12 @@ function validarAgregarEditar() {
 
 function agregarViaje() {
     if (validarFormViajes()) {
+        //Se obtiene el ID del usuario actual mediante JQuery al input hidden con el id "idUsuario" en menu.jsp
+        var id = $('#idUsuario');
         $.ajax({
             type: 'POST',
             data: $('#frmAddViaje').serialize(), // Convierte los datos del formulario a application/x-www-form-urlencoded
-            url: '../srvControladorViajes?accion=agregar',
+            url: '../srvControladorViajes?accion=agregar&id='+id,
             beforeSend: function () {
                 swal.fire({
                     title: 'ESPERA',
