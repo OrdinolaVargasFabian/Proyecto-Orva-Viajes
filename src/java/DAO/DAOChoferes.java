@@ -119,7 +119,7 @@ public class DAOChoferes extends Conexion implements CRUDChoferes {
     }
     @Override
     public boolean ActualizarChofer(DTOChofer chofer) {
-        String consulta = "UPDATE chofer SET appat = ?, apmat = ?, nombre = ?, dni = ?, licenciaConducir = ?, fechaContratacion = ?, fechaVencimientoLicencia = ?, telefono = ?, disponibilidad = ? WHERE idChofer = ?";
+        String consulta = "UPDATE chofer SET appat = ?, apmat = ?, nombre = ?, dni = ?, licenciaConducir = ?, fechaVencimientoLicencia = ?, telefono = ? WHERE idChofer = ?";
         try {         
             ps = con.prepareStatement(consulta);
             ps.setString(1, chofer.getAppat());
@@ -127,11 +127,9 @@ public class DAOChoferes extends Conexion implements CRUDChoferes {
             ps.setString(3, chofer.getNombre());
             ps.setInt(4, chofer.getDni());
             ps.setString(5, chofer.getLicenciaConducir());
-            ps.setDate(6, new java.sql.Date(chofer.getFechaContratacion().getTime()));
-            ps.setDate(7, new java.sql.Date(chofer.getFechaVencimientoLicencia().getTime()));
-            ps.setInt(8, chofer.getTelefono());
-            ps.setInt(9, chofer.getDisponibilidad());
-            ps.setInt(11, chofer.getId());
+            ps.setDate(6, chofer.getFechaVencimientoLicencia());
+            ps.setInt(7, chofer.getTelefono());
+            ps.setInt(8, chofer.getId());
             int rowsUpdated = ps.executeUpdate();
             
             return rowsUpdated > 0;

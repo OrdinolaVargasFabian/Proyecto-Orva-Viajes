@@ -10,6 +10,7 @@
                 <select name="slctBus" id="slctBusViEdit" class="form-select">
                     <option value="">[Seleccione]</option>
                     <option value="1">Bus 1</option>
+                    <option value="2">Bus 2</option>
                 </select>
             </div>
             <div class="col-6">

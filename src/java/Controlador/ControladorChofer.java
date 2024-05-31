@@ -30,32 +30,35 @@ public class ControladorChofer extends HttpServlet {
             LinkedList<DTOChofer> listaChoferes = dao.ListarChoferes();
             HttpSession session = request.getSession();
             session.setAttribute("listaChoferes", listaChoferes);
+            RequestDispatcher vista = request.getRequestDispatcher("Vista/AdministrarChoferes.jsp");
+            vista.forward(request, response);
         } else if (action.equalsIgnoreCase("Agregar")) {
             LeerChoferes(request, response, false);
             dao.AgregarChofer(chofer);
         } else if (action.equalsIgnoreCase("Editar")) {
-            request.setAttribute("idchofer", request.getParameter("idchofer"));
+            int idChofer = Integer.parseInt(request.getParameter("idChofer"));
+            chofer = dao.ObtenerChofer(idChofer);
+            HttpSession session = request.getSession();
+            session.setAttribute("detalleChofer", chofer);
+            response.sendRedirect("Vista/EditarChofer.jsp");
         } else if (action.equalsIgnoreCase("Actualizar")) {
             LeerChoferes(request, response, true);
-            DTOChofer chofer = (DTOChofer) request.getAttribute("chofer");
             dao.ActualizarChofer(chofer);
+            response.sendRedirect("Vista/AdministrarChoferes.jsp");
         } else if (action.equalsIgnoreCase("eliminar")) {
             int id = Integer.parseInt(request.getParameter("idChofer"));
             dao.EliminarChofer(id);
         }
-        RequestDispatcher vista = request.getRequestDispatcher("Vista/AdministrarChoferes.jsp");
-        vista.forward(request, response);
-
     }
 
     public void LeerChoferes(HttpServletRequest request, HttpServletResponse response, boolean editar) {
-        chofer.setAppat(request.getParameter("appat"));
-        chofer.setApmat(request.getParameter("apmat"));
-        chofer.setNombre((request.getParameter("nombre")));
-        chofer.setDni(Integer.parseInt(request.getParameter("dni")));
-        chofer.setLicenciaConducir(request.getParameter("licencia"));
-        chofer.setFechaVencimientoLicencia(Date.valueOf(request.getParameter("vencLicencia")));
-        chofer.setTelefono(Integer.parseInt(request.getParameter("telefono")));
+        chofer.setAppat(request.getParameter("txtAppat"));
+        chofer.setApmat(request.getParameter("txtApmat"));
+        chofer.setNombre((request.getParameter("txtNombre")));
+        chofer.setDni(Integer.parseInt(request.getParameter("txtDni")));
+        chofer.setLicenciaConducir(request.getParameter("txtLicencia"));
+        chofer.setFechaVencimientoLicencia(Date.valueOf(request.getParameter("txtVencLicencia")));
+        chofer.setTelefono(Integer.parseInt(request.getParameter("txtTelefono")));
         if (editar) {
             chofer.setId(Integer.parseInt(request.getParameter("idChofer")));
         } else {

@@ -17,38 +17,37 @@
                     <div class="row mb-3">
                         <div class="col-6">
                             <label for="appat">Apellido Paterno</label>
-                            <input type="text" name="appat" id="appatCh" class="form-control">
+                            <input type="text" name="txtAppat" id="appatCh" class="form-control">
                         </div>
                         <div class="col-6">
                             <label for="apmat">Apellido Materno</label>
-                            <input type="text" name="apmat" id="apmatCh" class="form-control">
+                            <input type="text" name="txtApmat" id="apmatCh" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">
                             <label for="nombre">Nombre</label>
-                            <input type="text" name="nombre" id="nombreCh" class="form-control">
+                            <input type="text" name="txtNombre" id="nombreCh" class="form-control">
                         </div>
                         <div class="col-6">
                             <label for="dni">DNI</label>
-                            <input type="text" name="dni" id="dniCh" class="form-control">
+                            <input type="text" name="txtDni" id="dniCh" class="form-control">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">
                             <label for="licencia">Licencia de Conducir</label>
-                            <input type="text" name="licencia" id="licenciaCh" class="form-control">
+                            <input type="text" name="txtLicencia" id="licenciaCh" class="form-control">
                         </div>
                         <div class="col-6">                            
                             <label for="vencLicencia">Vencimiento de Licencia</label>
-                            <input type="date" name="vencLicencia" id="vencLicenciaCh" class="form-control">
+                            <input type="date" name="txtVencLicencia" id="vencLicenciaCh" class="form-control">
                         </div>
-                        
                     </div>
                     <div class="row mb-3">                        
                         <div class="col-6">
                             <label for="telefono">Telefono de Contacto</label>
-                            <input type="text" name="telefono" id="telefonoCh" class="form-control">                                                             
+                            <input type="text" name="txtTelefono" id="telefonoCh" class="form-control">                                                             
                         </div>
                     </div>                          
                          
