@@ -41,7 +41,13 @@
                 <c:forEach var="rutas" items="${listaRutas}">
                     <tr>
                         <td class="text-center">${rutas.getId()}</td>
-                        <td class="text-center">${rutas.getIdBus()}</td>
+                        <td class="text-center">
+                            <c:forEach var="bus" items="${listaBuses}" varStatus="contador">
+                                <c:if test="${contador.index == (rutas.getIdBus()-2)}">
+                                    ${bus.getPlaca()}
+                                </c:if>
+                            </c:forEach>
+                        </td>
                         <td class="text-center">
                             <c:forEach var="chofer" items="${listaChoferes}" varStatus="contador">
                                 <c:if test="${contador.index == (rutas.getIdChofer()-1)}">

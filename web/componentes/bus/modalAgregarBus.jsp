@@ -24,9 +24,9 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col-6">
+                        <div class="col">
                             <label for="descripcion">Descripcion</label>
-                            <input type="text" name="descripcion" id="descripcion" class="form-control">
+                            <textarea name="descripcion" id="descripcion" class="form-control"></textarea>
                         </div>
                     </div>
                 </form>

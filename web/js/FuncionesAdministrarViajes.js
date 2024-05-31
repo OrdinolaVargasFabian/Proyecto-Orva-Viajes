@@ -76,7 +76,7 @@ function agregarViaje() {
             },
             success: function (data, textStatus, jqXHR) {
                 document.getElementById('frmAddViaje').reset();
-                swal.fire('CORRECTO', 'Se programó la nueva ruta de viaje', 'success').then((result) => {
+                swal.fire('CORRECTO', 'Se program&oacute la nueva ruta de viaje', 'success').then((result) => {
                     if (result.isConfirmed) {
                         location.reload();
                     }
@@ -101,7 +101,7 @@ function eliminarViaje(id) {
             })
         },
         success: function (data, textStatus, jqXHR) {
-            swal.fire('CORRECTO', 'Se eliminó la ruta de viaje', 'success').then((result) => {
+            swal.fire('CORRECTO', 'Se elimin&oacute la ruta de viaje', 'success').then((result) => {
                 if (result.isConfirmed) {
                     location.reload();
                 }
@@ -146,10 +146,6 @@ function validarFormViajes() {
     }
     if (form.txtPrecio.value == "") {
         swal.fire('ERROR', 'El precio de viaje es requerido', 'error');
-        return false;
-    }
-    if (form.txtBoletos.value == "") {
-        swal.fire('ERROR', 'El número de boletos es requerido', 'error');
         return false;
     }
     return true;

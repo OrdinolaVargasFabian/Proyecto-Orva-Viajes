@@ -21,7 +21,7 @@ public class srvControladorViajes extends HttpServlet {
     DTORuta ruta = new DTORuta();
     
     public void LeerDatos(HttpServletRequest request, HttpServletResponse response, boolean editar){
-        ruta.setIdBus(Integer.parseInt(request.getParameter("slctBus")));
+        
         ruta.setIdChofer(Integer.parseInt(request.getParameter("slctChofer")));
         ruta.setFechaSalida(Date.valueOf(request.getParameter("txtFechaSalida")));
         //Valida si es necesario agregar segundos o no
@@ -36,10 +36,13 @@ public class srvControladorViajes extends HttpServlet {
         ruta.setHoraLlegada(Time.valueOf(horaLlegada));
         ruta.setDestino(Integer.parseInt(request.getParameter("slctDestino")));
         ruta.setPrecio(Double.parseDouble(request.getParameter("txtPrecio")));
-        ruta.setBoletosRestantes(Integer.parseInt(request.getParameter("txtBoletos")));
+        
         if (editar) {
             ruta.setId(Integer.parseInt(request.getParameter("idRuta")));
         } else {
+            String[] bus_asientos = request.getParameter("slctBus").split("_");
+            ruta.setIdBus(Integer.parseInt(bus_asientos[0]));
+            ruta.setBoletosRestantes(Integer.parseInt(bus_asientos[1]));
             ruta.setCreador(Integer.parseInt(request.getParameter("id")));
         }
     }  

@@ -19,7 +19,11 @@
                             <label for="slctBusVi">Bus de Viaje</label>
                             <select name="slctBus" id="slctBusVi" class="form-select">
                                 <option value="">[Seleccione]</option>
-                                <option value="1">Bus 1</option>
+                                <c:forEach var="BusDisponible" items="${listaBuses}">
+                                    <option value="${BusDisponible.getId()}_${BusDisponible.getCapacidadAsientos()}">
+                                        ${BusDisponible.getPlaca()}
+                                    </option>
+                                </c:forEach>
                             </select>
                         </div>
                         <div class="col-6">
@@ -77,13 +81,9 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col">
+                        <div class="col-6">
                             <label for="txtPrecio">Precio</label>
                             <input type="number" name="txtPrecio" id="txtPrecioVi" class="form-control" step="0.01" min="0">
-                        </div>
-                        <div class="col">
-                            <label for="txtBoletos">Boletos Disponibles</label>
-                            <input type="number" name="txtBoletos" id="txtBoletos" class="form-control" min="0">
                         </div>
                     </div>
                 </form>

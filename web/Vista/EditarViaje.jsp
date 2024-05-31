@@ -9,8 +9,11 @@
                 <label for="slctBusViEdit">Bus de Viaje</label>
                 <select name="slctBus" id="slctBusViEdit" class="form-select">
                     <option value="">[Seleccione]</option>
-                    <option value="1">Bus 1</option>
-                    <option value="2">Bus 2</option>
+                    <c:forEach var="BusDisponible" items="${listaBuses}">
+                        <option value="${BusDisponible.getId()}" <c:if test="${BusDisponible.getId() == detalleRuta.getIdBus()}">selected</c:if>>
+                            ${BusDisponible.getPlaca()}
+                        </option>
+                    </c:forEach>
                 </select>
             </div>
             <div class="col-6">

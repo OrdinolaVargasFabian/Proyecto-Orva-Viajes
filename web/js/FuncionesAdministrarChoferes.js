@@ -46,7 +46,7 @@ function agregarChofer() {
             },
             success: function (data, textStatus, jqXHR) {
                 document.getElementById('frmAddChofer').reset();
-                swal.fire('CORRECTO', 'Se agrego nuevo chofer', 'success').then((result) => {
+                swal.fire('CORRECTO', 'Se agreg&oacute nuevo chofer', 'success').then((result) => {
                     if (result.isConfirmed) {
                         location.reload();
                     }
@@ -70,7 +70,7 @@ function eliminarChofer(id) {
             })
         },
         success: function (data, textStatus, jqXHR) {
-            swal.fire('CORRECTO', 'Se eliminó el chofer', 'success').then((result) => {
+            swal.fire('CORRECTO', 'Se elimin&oacute el chofer', 'success').then((result) => {
                 if (result.isConfirmed) {
                     location.reload();
                 }

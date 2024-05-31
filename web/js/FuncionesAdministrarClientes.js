@@ -38,7 +38,7 @@ function agregarCliente() {
             },
             success: function (data, textStatus, jqXHR) {
                 document.getElementById('frmAddCliente').reset();
-                swal.fire('CORRECTO', 'Se agregó el nuevo cliente', 'success').then((result) => {
+                swal.fire('CORRECTO', 'Se agreg&oacute el nuevo cliente', 'success').then((result) => {
                     if (result.isConfirmed) {
                         location.reload();
                     }
@@ -62,7 +62,7 @@ function eliminarCliente(id) {
             })
         },
         success: function (data, textStatus, jqXHR) {
-            swal.fire('CORRECTO', 'Se eliminó el cliente', 'success').then((result) => {
+            swal.fire('CORRECTO', 'Se elimin&oacute el cliente', 'success').then((result) => {
                 if (result.isConfirmed) {
                     location.reload();
                 }

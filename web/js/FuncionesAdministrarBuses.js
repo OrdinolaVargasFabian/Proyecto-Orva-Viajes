@@ -21,35 +21,7 @@ function obtenerBuses() {
                     search: '',
                     searchPlaceholder: 'Search..'
                 },
-                buttons: [
-                    {
-                        extend: 'excel',
-                        text: '<i class="bx bxs-file-export me-2"></i>Excel',
-                        titleAttr: 'Exportar a Excel',
-                        className: 'btn btn-success mx-3 rounded',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4]
-                        }
-                    },
-                    {
-                        extend: 'pdf',
-                        text: '<i class="bx bxs-file-pdf me-2"></i>PDF',
-                        titleAttr: 'Exportar a PDF',
-                        className: 'btn btn-danger me-3 rounded',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4]
-                        }
-                    },
-                    {
-                        extend: 'print',
-                        text: '<i class="bx bxs-printer me-2"></i>Imprimir',
-                        titleAttr: 'Imprimir',
-                        className: 'btn btn-info text-white rounded',
-                        exportOptions: {
-                            columns: [0, 1, 2, 3, 4]
-                        }
-                    }
-                ],
+                buttons: [],
                 responsive: false
             });
         }
@@ -121,7 +93,7 @@ function obtenerBuses() {
             })
         },
         success: function (data, textStatus, jqXHR) {
-            swal.fire('CORRECTO', 'Se eliminó el bus', 'success').then((result) => {
+            swal.fire('CORRECTO', 'Se elimin&oacute el bus', 'success').then((result) => {
                 if (result.isConfirmed) {
                     location.reload();
                 }
