@@ -2,21 +2,22 @@
 <div class="m-4 p-5 bg-light shadow rounded">
     <h3 class="text-center">EDITAR BUS</h3>
     <hr class="mb-5">
-    <form id="frmEditBus" class="row g-3" method="post">
+    <form id="frmEditBus" class="row g-3" method="post" action="../ServletBus?accion=actualizar">
+        <input type="hidden" name="idBus" value="${detalleBus.getId()}">
         <div class="row mb-3">
             <div class="col-6">
-                <label for="txtPlacaEdit">Placa</label>
-                <input type="text" name="txtPlaca" id="txtPlacaEdit" class="form-control">
+                <label for="placa">Placa</label>
+                <input type="text" name="placa" id="placa" class="form-control" value="${detalleBus.getPlaca()}">
             </div>
             <div class="col-6">
-                <label for="txtAsientosEdit">Cantidad de Asientos</label>
-                <input type="number" name="txtAsientos" id="txtAsientosEdit" class="form-control">
+                <label for="asientos">Cantidad de Asientos</label>
+                <input type="number" name="asientos" id="asientos" class="form-control" value="${detalleBus.getCapacidadAsientos()}">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <label for="txtDescripcionEdit">Descripción</label>
-                <textarea name="txtDescripcion" id="txtDescripcionEdit" class="form-control"></textarea>
+                <label for="descripcion">Descripción</label>
+                <textarea name="descripcion" id="descripcion" class="form-control">${detalleBus.getDescripcion()}</textarea>
             </div>
         </div>
         <div class="d-flex">

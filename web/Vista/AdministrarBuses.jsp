@@ -17,25 +17,36 @@
                     <td class="text-center">ID</td>
                     <td class="text-center">PLACA</td>
                     <td class="text-center">ASIENTOS</td>
-                    <td class="text-center">TIPO</td>
+                    <td class="text-center">DESCRIPCION</td>
                     <td class="text-center">ESTADO</td>
                     <td class="text-center">ACCIONES</td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="text-center">1</td>
-                    <td class="text-center">trvdz24</td>
-                    <td class="text-center">45</td>
-                    <td class="text-center">Omnibus de 2 niveles</td>
-                    <td class="text-center">Activo</td>
-                    <td class="text-center">
-                        <div class="d-inline-block text-nowrap">
-                            <a href="" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></a>
-                            <a href="" type='button' class='btn btn-icon btn-outline-danger me-2'><i class='tf-icons bx bxs-trash'></i></a>
-                        </div>
+                <c:forEach var="bus" items="${listaBuses}">
+                    <tr>
+                        <td class="text-center">${bus.getId()}</td>
+                        <td class="text-center">${bus.getPlaca()}</td>
+                        <td class="text-center">${bus.getCapacidadAsientos()}</td>
+                        <td class="text-center">${bus.getDescripcion()}</td>
+                        <td class="text-center">
+                            <c:choose>
+                                <c:when test="${bus.estado == 1}">
+                                    Activo
+                                </c:when>
+                                <c:when test="${bus.estado == 2}">
+                                    Inactivo
+                                </c:when>
+                            </c:choose>
                     </td>
-                </tr>
+                        <td class="text-center">
+                            <div class="d-inline-block text-nowrap">
+                                <a href="../ServletBus?accion=editar&idBus=${bus.getId()}" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></a>
+                                <a href="javascript:eliminarBus(${bus.getId()})" type='button' class='btn btn-icon btn-outline-danger me-2'><i class='tf-icons bx bxs-trash'></i></a>
+                            </div>
+                        </td>
+                    </tr>
+                </c:forEach>
             </tbody>
         </table>
     </div>
