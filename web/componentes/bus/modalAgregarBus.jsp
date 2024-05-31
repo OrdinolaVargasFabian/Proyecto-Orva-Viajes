@@ -12,7 +12,7 @@
                     <h3>Agregar</h3>
                 </div>
                 <hr style="padding-bottom: 20px;">
-                <form id="frmAddBus" class="row g-3" onsubmit="return false">
+                <form id="formAgregarBus" class="row g-3" onsubmit="return false">
                     <div class="row mb-3">
                         <div class="col-6">
                             <label for="placa">Placa</label>
@@ -25,15 +25,15 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col-6">
-                            <label for="tipo">Tipo</label>
-                            <input type="text" name="tipo" id="tipo" class="form-control">
+                            <label for="descripcion">Descripcion</label>
+                            <input type="text" name="descripcion" id="descripcion" class="form-control">
                         </div>
                     </div>
                 </form>
                 <hr style="padding-bottom: 20px;">
                 <div class="d-flex">
                     <div class="ms-auto">
-                        <a href="#" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</a>
+                        <button onclick="agregarBus()" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</button>
                     </div>
                 </div>
             </div>

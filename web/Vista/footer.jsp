@@ -9,6 +9,7 @@
 <script>
     //Obtiene los datos de la BD para ser cargados en las tablas
     $(document).ready(function () {
+        obtenerBuses();
         obtenerChoferes();
         obtenerViajes();
 
