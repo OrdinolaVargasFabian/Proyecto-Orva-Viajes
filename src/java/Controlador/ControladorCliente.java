@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import Modelo.DTOCliente;
 import DAO.DAOClientes;
 
-@WebServlet(name = "RegistrarCliente", urlPatterns = {"/RegistrarCliente"})
-public class RegistrarCliente extends HttpServlet {
+@WebServlet(name = "ControladorCliente", urlPatterns = {"/ControladorCliente"})
+public class ControladorCliente extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
@@ -23,7 +23,12 @@ public class RegistrarCliente extends HttpServlet {
             LeerDatos(request, cliente, true);
             dao.ActualizarCliente(cliente);
             response.sendRedirect("Vista/AdministrarClientes.jsp");
-        } else {
+        } 
+        else if (action != null && action.equals("eliminar")) {
+            int idCliente = Integer.parseInt(request.getParameter("idCliente"));
+            dao.EliminarCliente(idCliente);
+        }
+        else {
             LeerDatos(request, cliente, false);
             dao.AgregarCliente(cliente);
             response.sendRedirect("Vista/AdministrarClientes.jsp");
@@ -41,7 +46,7 @@ public class RegistrarCliente extends HttpServlet {
         if (editar) {
             cliente.setId(Integer.parseInt(request.getParameter("idCliente")));
         } else {
-            cliente.setCreador(Integer.parseInt(request.getParameter("idCliente")));
+            cliente.setCreador(Integer.parseInt(request.getParameter("id")));
         }
     }
 

@@ -29,7 +29,12 @@
                     <td class="text-center">45</td>
                     <td class="text-center">Omnibus de 2 niveles</td>
                     <td class="text-center">Activo</td>
-                    <td class="text-center"></td>
+                    <td class="text-center">
+                        <div class="d-inline-block text-nowrap">
+                            <a href="" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></a>
+                            <a href="" type='button' class='btn btn-icon btn-outline-danger me-2'><i class='tf-icons bx bxs-trash'></i></a>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -26,7 +26,7 @@ function agregarCliente() {
         $.ajax({
             type: 'POST',
             data: $('#frmAddCliente').serialize(), // Convierte los datos del formulario a application/x-www-form-urlencoded
-            url: '../RegistrarCliente?accion=agregar&id=' + id,
+            url: '../ControladorCliente?accion=agregar&id=' + id,
             beforeSend: function () {
                 swal.fire({
                     title: 'ESPERA',
@@ -51,7 +51,7 @@ function agregarCliente() {
 function eliminarCliente(id) {
     $.ajax({
         type: 'POST',
-        url: '../' + id,
+        url: '../ControladorCliente?accion=eliminar&idCliente=' + id,
         beforeSend: function () {
             swal.fire({
                 title: 'ESPERA',

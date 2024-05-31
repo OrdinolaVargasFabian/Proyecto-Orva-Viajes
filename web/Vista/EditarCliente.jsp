@@ -9,7 +9,7 @@
 <div class="m-4 p-5 bg-light shadow rounded">
     <h3 class="text-center">EDITAR CLIENTE</h3>
     <hr class="mb-5">
-    <form action="../RegistrarCliente?accion=actualizar" class="row g-3" method="post">
+    <form action="../ControladorCliente?accion=actualizar" class="row g-3" method="post">
         <input type="hidden" name="idCliente" value="<%= cliente.getId() %>">
         <div class="mb-3">
             <label for="appat" class="form-label">Apellido Paterno</label>

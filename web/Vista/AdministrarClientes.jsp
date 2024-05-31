@@ -43,7 +43,7 @@
                     <td class="text-center">
                         <!-- Agregar acciones como editar y eliminar -->
                         <a href="EditarCliente.jsp?id=<%= cliente.getId() %>" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></a>
-                        <a href="EliminarCliente?id=<%= cliente.getId() %>" class='btn btn-icon btn-outline-danger me-2'><i class='tf-icons bx bxs-trash'></i></a>
+                        <a href="javascript:eliminarCliente(<%= cliente.getId() %>)" class='btn btn-icon btn-outline-danger me-2'><i class='tf-icons bx bxs-trash'></i></a>
                     </td>
                 </tr>
                 <% } %>
