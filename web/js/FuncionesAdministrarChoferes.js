@@ -1,59 +1,36 @@
-//function obtenerChoferes() {
-//    $.ajax({
-//        url: '../ControladorChofer?accion=listar',
-//        type: 'POST',
-//        success: function (response) {
-//            console.log('Exito ObtenerChoferes');
-//
-//          $('#datatable-chofer').DataTable({
-//                order: [[0, 'desc']],
-//                dom: '<"row mx-2"' +
-//                        '<"col-md-2"<"me-3"l>>' +
-//                        '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"fB>>' +
-//                        '>t' +
-//                        '<"row mx-2"' +
-//                        '<"col-sm-12 col-md-6"i>' +
-//                        '<"col-sm-12 col-md-6"p>' +
-//                        '>',
-//                language: {
-//                    sLengthMenu: '_MENU_',
-//                    search: '',
-//                    searchPlaceholder: 'Search..'
-//                },
-//                buttons: [],
-//                responsive: false
-//            });
-//        }
-//    });
-//}
-//
-//
-//var formChofer = document.getElementById('frmAddChofer');
-$(document).ready(function () {
-    $('#datatable-chofer').DataTable({
-        order: [[0, 'desc']],
-        dom: '<"row mx-2"' +
-                '<"col-md-2"<"me-3"l>>' +
-                '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"fB>>' +
-                '>t' +
-                '<"row mx-2"' +
-                '<"col-sm-12 col-md-6"i>' +
-                '<"col-sm-12 col-md-6"p>' +
-                '>',
-        language: {
-            sLengthMenu: '_MENU_',
-            search: '',
-            searchPlaceholder: 'Search..'
-        },
-        buttons: [],
-        responsive: true
+function obtenerChoferes() {
+    $.ajax({
+        url: '../ControladorChofer?accion=listar',
+        type: 'POST',
+        success: function (response) {
+            console.log('Exito ObtenerChoferes');
+
+            $('#datatable-chofer').DataTable({
+                order: [[0, 'desc']],
+                dom: '<"row mx-2"' +
+                        '<"col-md-2"<"me-3"l>>' +
+                        '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"fB>>' +
+                        '>t' +
+                        '<"row mx-2"' +
+                        '<"col-sm-12 col-md-6"i>' +
+                        '<"col-sm-12 col-md-6"p>' +
+                        '>',
+                language: {
+                    sLengthMenu: '_MENU_',
+                    search: '',
+                    searchPlaceholder: 'Search..'
+                },
+                buttons: [],
+                responsive: false
+            });
+        }
     });
-});
+}
 
 function agregarChofer() {
     if (validarFormChofer()) {
         //Se obtiene el ID del usuario actual mediante JQuery al input hidden con el id "idUsuario" en menu.jsp
-        var id = $('#idUsario').val();
+        var id = $('#idUsuario').val();
         $.ajax({
             type: 'POST',
             data: $('#frmAddChofer').serialize(), // Convierte los datos del formulario a application/x-www-form-urlencoded
@@ -141,17 +118,6 @@ function validarFormChofer() {
 //        swal.fire('ERROR', 'El estado es requerido', 'error');
 //        return false;
 //    }
-    
+
     return true;
 }
-
-//function listarChoferes() {
-//    $.ajax({
-//        url: '../ObtenerChoferes',
-//        type: 'POST',
-//        success: function (response) {
-//            console.log('Exito listar choferes');
-//        }
-//    });
-//}
-

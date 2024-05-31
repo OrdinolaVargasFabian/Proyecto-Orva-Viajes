@@ -1,4 +1,3 @@
-
 package Controlador;
 
 import java.io.IOException;
@@ -18,35 +17,45 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ControladorChofer", urlPatterns = {"/ControladorChofer"})
 public class ControladorChofer extends HttpServlet {
-       
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-        
-        String action = request.getParameter("accion");
-        DAOChoferes dao = new DAOChoferes();
-        DTOChofer chofer = new DTOChofer();
-
-        if (action != null && action.equals("actualizar")) {
-            LeerChoferes(request,chofer, true);
-            dao.ActualizarChofer(chofer);
-            response.sendRedirect("Vista/AdministrarChoferes.jsp");
-        } else {
-            LeerChoferes(request, chofer, false);
-            dao.AgregarChofer(chofer);
-            response.sendRedirect("Vista/AdministrarChoferes.jsp");
-        }
-        
-    }  
     
-            
-    public void LeerChoferes(HttpServletRequest request, DTOChofer chofer,boolean editar){
-//         DTOChofer chofer = new DTOChofer();
- //       chofer.setId(Integer.parseInt(request.getParameter("idChofer")));
+    DTOChofer chofer = new DTOChofer();
+
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String action = request.getParameter("accion");//accion: listar,agregar,editar,eliminar
+
+        DAOChoferes dao = new DAOChoferes();
+
+        if (action.equalsIgnoreCase("listar")) {
+            LinkedList<DTOChofer> listaChoferes = dao.ListarChoferes();
+            HttpSession session = request.getSession();
+            session.setAttribute("listaChoferes", listaChoferes);
+        } else if (action.equalsIgnoreCase("Agregar")) {
+            LeerChoferes(request, response, false);
+            dao.AgregarChofer(chofer);
+        } else if (action.equalsIgnoreCase("Editar")) {
+            request.setAttribute("idchofer", request.getParameter("idchofer"));
+        } else if (action.equalsIgnoreCase("Actualizar")) {
+            LeerChoferes(request, response, true);
+            DTOChofer chofer = (DTOChofer) request.getAttribute("chofer");
+            dao.ActualizarChofer(chofer);
+        } else if (action.equalsIgnoreCase("eliminar")) {
+            int id = Integer.parseInt(request.getParameter("idchofer"));
+            // id = request.getParameter("idchofer");
+            dao.EliminarChofer(id);
+        }
+        RequestDispatcher vista = request.getRequestDispatcher("Vista/AdministrarChoferes.jsp");
+        vista.forward(request, response);
+
+    }
+
+    public void LeerChoferes(HttpServletRequest request, HttpServletResponse response, boolean editar) {
         chofer.setAppat(request.getParameter("appat"));
         chofer.setApmat(request.getParameter("apmat"));
-        chofer.setNombre((request.getParameter("nombre")));        
+        chofer.setNombre((request.getParameter("nombre")));
         chofer.setDni(Integer.parseInt(request.getParameter("dni")));
         chofer.setLicenciaConducir(request.getParameter("licencia"));
-        chofer.setFechaVencimientoLicencia(Date.valueOf(request.getParameter("Venclicencia")));
+        chofer.setFechaVencimientoLicencia(Date.valueOf(request.getParameter("vencLicencia")));
         chofer.setTelefono(Integer.parseInt(request.getParameter("telefono")));
         if (editar) {
             chofer.setId(Integer.parseInt(request.getParameter("idChofer")));
@@ -54,10 +63,7 @@ public class ControladorChofer extends HttpServlet {
             chofer.setCreador(Integer.parseInt(request.getParameter("id")));
         }
     }
-        
-        
-        
-        
+
 //        DAOChoferes dao = new DAOChoferes();
 //        
 //        String action = request.getParameter("accion");//accion: listar,agregar,editar,eliminar
@@ -86,8 +92,6 @@ public class ControladorChofer extends HttpServlet {
 //            int idChofer = Integer.parseInt(request.getParameter("idChofer"));
 //            dao.EliminarChofer(idChofer);            
 //        }        
-    
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -115,4 +119,3 @@ public class ControladorChofer extends HttpServlet {
     }// </editor-fold>
 
 }
-

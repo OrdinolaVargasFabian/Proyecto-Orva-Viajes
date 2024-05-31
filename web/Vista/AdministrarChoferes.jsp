@@ -31,48 +31,32 @@
                 </tr>
             </thead>
             <tbody>
-               <%--<c:forEach var="choferes" items="${listaChoferes}">--%>
-               <% 
-                    DAO.DAOChoferes daoChoferes = new DAO.DAOChoferes();
-                    java.util.LinkedList<Modelo.DTOChofer> lista = daoChoferes.ListarChoferes();
-                    for(Modelo.DTOChofer choferes : lista) {
-                %>
+               <c:forEach var="choferes" items="${listaChoferes}">
                     <tr>
-                        <td class="text-center"><%=choferes.getId()%></td> 
-                        <td class="text-center"><%=choferes.getAppat()%> ${choferes.getApmat()}, ${choferes.getNombre()}</td>
-                        <td class="text-center"><%=choferes.getDni()%></td>
-                        <td class="text-center"><%=choferes.getLicenciaConducir()%></td>
-                        <td class="text-center"><%=choferes.getFechaContratacion()%></td>
-                        <td class="text-center"><%=choferes.getFechaVencimientoLicencia()%></td>
-                        <td class="text-center"><%=choferes.getTelefono()%></td>
-                        <td class="text-center"><%= choferes.getDisponibilidad() == 1 ? "Disponible" : "No disponible" %></td>
+                        <td class="text-center">${choferes.getId()}</td> 
+                        <td class="text-center">${choferes.getAppat()} ${choferes.getApmat()}, ${choferes.getNombre()}</td>
+                        <td class="text-center">${choferes.getDni()}</td>
+                        <td class="text-center">${choferes.getLicenciaConducir()}</td>
+                        <td class="text-center">${choferes.getFechaContratacion()}</td>
+                        <td class="text-center">${choferes.getFechaVencimientoLicencia()}</td>
+                        <td class="text-center">${choferes.getTelefono()}</td>
+                        <td class="text-center">${choferes.getDisponibilidad() == 1 ? 'Disponible' : 'No disponible'}</td>
                         <td class="text-center">
-                            <%--<c:if test="${choferes.getEstado() == 1}">
+                            <c:if test="${choferes.getEstado() == 1}">
                                 <i class='bx bxs-circle text-success'></i>
                             </c:if>
                             <c:if test="${choferes.getEstado() == 2}">
                                 <i class='bx bxs-circle text-danger'></i>
-                            </c:if> --%>
-                            <% if (choferes.getEstado() == 1) { %>
-                            <i class='bx bxs-circle text-success'></i>
-                            <% } else if (choferes.getEstado() == 2) { %>
-                            <i class='bx bxs-circle text-danger'></i>
-                            <% } %>
+                            </c:if>
                         </td>
                         <td class="text-center">
                             <div class="d-inline-block text-nowrap">
-                                <a href="EditarChofer.jsp?id=<%= choferes.getId() %>" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></a>
-                                <a href="EliminarChofer?id=<%= choferes.getId() %>" class='btn btn-icon btn-outline-danger me-2'><i class='tf-icons bx bxs-trash'></i></a>
-                               <%--<a href="../ControladorChofer?accion=editar&idChofer=${choferes.getId()}" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></a>--%>
-                               <%-- 1 <a href="../srvControladorViajes?accion=editar&idChofer=${choferes.getId()}" type='button' class='btn btn-icon btn-outline-success  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='bx bxs-edit'></i></a> --%>
-                               <%--<a href="javascript:eliminarChoferes(${choferes.getId()})" type='button' class='btn btn-icon btn-outline-danger me-2'><i class='tf-icons bx bxs-trash'></i></a>--%>
-                                <%--<a href="../ControladorChofer?accion=eliminar&idChofer=${choferes.getId()}" class='btn btn-icon btn-outline-danger  me-2'><i class='tf-icons bx bxs-trash'></i></a>--%>
-                                <%--1<a href="../ControladorChofer?accion=eliminar&idChofer=${choferes.getId()}" type='button' class='btn btn-icon btn-outline-danger  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarChofer"><i class='tf-icons bx bxs-trash'></i></a>--%>
+                                <a href="../srvControladorViajes?accion=editar&idChofer=${choferes.getId()}" type='button' class='btn btn-icon btn-outline-success  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='bx bxs-edit'></i></a>
+                                <a href="../srvControladorViajes?accion=eliminar&idChofer=${choferes.getId()}" type='button' class='btn btn-icon btn-outline-danger  me-2' data-bs-toggle="modal" data-bs-target="#mdlAgregarViaje"><i class='tf-icons bx bxs-trash'></i></a>
                             </div>
                         </td>
                     </tr>
-                    <% } %>
-                <%--</c:forEach>--%>
+                </c:forEach>
             </tbody>
         </table>
     </div>

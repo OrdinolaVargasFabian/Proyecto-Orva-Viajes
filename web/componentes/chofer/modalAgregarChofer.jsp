@@ -56,8 +56,6 @@
                 <hr style="padding-bottom: 20px;">
                 <div class="d-flex">
                     <div class="ms-auto">
-                        <%--<a href="../ControladorChofer?accion=agregar&idChofer=${choferes.getId()}" class='btn btn-icon btn-outline-success me-2'><i class='bx bxs-edit'></i></a>--%>
-                        <%--<a href="../ControladorChofer?accion=agregar&idChofer=${choferes.getId()}" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</a>--%>
                         <button onclick="agregarChofer()" class="btn btn-primary"><i class='bx bxs-save me-2'></i>Registrar</button>
                     </div>
                 </div>
