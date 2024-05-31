@@ -59,7 +59,6 @@ function agregarChofer() {
 function eliminarChofer(id) {
     $.ajax({
         type: 'POST',
-        data: $('#frmAddChofer').serialize(), // Convierte los datos del formulario a application/x-www-form-urlencoded
         url: '../ControladorChofer?accion=eliminar&idChofer=' + id,
         beforeSend: function () {
             swal.fire({
@@ -71,7 +70,7 @@ function eliminarChofer(id) {
             })
         },
         success: function (data, textStatus, jqXHR) {
-            swal.fire('CORRECTO', 'Se eliminó chofer', 'success').then((result) => {
+            swal.fire('CORRECTO', 'Se eliminó el chofer', 'success').then((result) => {
                 if (result.isConfirmed) {
                     location.reload();
                 }

@@ -40,8 +40,7 @@ public class ControladorChofer extends HttpServlet {
             DTOChofer chofer = (DTOChofer) request.getAttribute("chofer");
             dao.ActualizarChofer(chofer);
         } else if (action.equalsIgnoreCase("eliminar")) {
-            int id = Integer.parseInt(request.getParameter("idchofer"));
-            // id = request.getParameter("idchofer");
+            int id = Integer.parseInt(request.getParameter("idChofer"));
             dao.EliminarChofer(id);
         }
         RequestDispatcher vista = request.getRequestDispatcher("Vista/AdministrarChoferes.jsp");
