@@ -39,34 +39,19 @@
                             <label for="licencia">Licencia de Conducir</label>
                             <input type="text" name="licencia" id="licenciaCh" class="form-control">
                         </div>
-                        <div class="col-6">
-                            <label for="contratación">Fecha de Contratación</label>
-                            <input type="date" name="contratacion" id="contratacion" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
                         <div class="col-6">                            
                             <label for="vencLicencia">Vencimiento de Licencia</label>
                             <input type="date" name="vencLicencia" id="vencLicenciaCh" class="form-control">
                         </div>
+                        
+                    </div>
+                    <div class="row mb-3">                        
                         <div class="col-6">
                             <label for="telefono">Telefono de Contacto</label>
                             <input type="text" name="telefono" id="telefonoCh" class="form-control">                                                             
                         </div>
-                    </div>  
-                    <div class="row mb-3">
-                        <div class="col-6"> 
-                            <label for="disponibilidad">Disponibilidad</label>
-                            <input type="text" name="disponibilidad" id="disponibilidadCh" class="form-control">                                                        
-                        </div>
-                        <div class="col-6">
-                            <label for="estado">Estado</label>
-                            <input type="text" name="estado" id="estadoCh" class="form-control">                                                          
-                        </div>
-                    </div>    
-                   
-        
-    
+                    </div>                          
+                         
                 </form>
                 <hr style="padding-bottom: 20px;">
                 <div class="d-flex">

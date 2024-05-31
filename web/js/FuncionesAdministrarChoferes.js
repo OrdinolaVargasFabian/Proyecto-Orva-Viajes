@@ -1,34 +1,54 @@
-function obtenerChoferes() {
-    $.ajax({
-        url: '../ControladorChofer?accion=listar',
-        type: 'POST',
-        success: function (response) {
-            console.log('Exito ObtenerChoferes');
-
-          $('#datatable-chofer').DataTable({
-                order: [[0, 'desc']],
-                dom: '<"row mx-2"' +
-                        '<"col-md-2"<"me-3"l>>' +
-                        '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"fB>>' +
-                        '>t' +
-                        '<"row mx-2"' +
-                        '<"col-sm-12 col-md-6"i>' +
-                        '<"col-sm-12 col-md-6"p>' +
-                        '>',
-                language: {
-                    sLengthMenu: '_MENU_',
-                    search: '',
-                    searchPlaceholder: 'Search..'
-                },
-                buttons: [],
-                responsive: false
-            });
-        }
+//function obtenerChoferes() {
+//    $.ajax({
+//        url: '../ControladorChofer?accion=listar',
+//        type: 'POST',
+//        success: function (response) {
+//            console.log('Exito ObtenerChoferes');
+//
+//          $('#datatable-chofer').DataTable({
+//                order: [[0, 'desc']],
+//                dom: '<"row mx-2"' +
+//                        '<"col-md-2"<"me-3"l>>' +
+//                        '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"fB>>' +
+//                        '>t' +
+//                        '<"row mx-2"' +
+//                        '<"col-sm-12 col-md-6"i>' +
+//                        '<"col-sm-12 col-md-6"p>' +
+//                        '>',
+//                language: {
+//                    sLengthMenu: '_MENU_',
+//                    search: '',
+//                    searchPlaceholder: 'Search..'
+//                },
+//                buttons: [],
+//                responsive: false
+//            });
+//        }
+//    });
+//}
+//
+//
+//var formChofer = document.getElementById('frmAddChofer');
+$(document).ready(function () {
+    $('#datatable-chofer').DataTable({
+        order: [[0, 'desc']],
+        dom: '<"row mx-2"' +
+                '<"col-md-2"<"me-3"l>>' +
+                '<"col-md-10"<"dt-action-buttons text-xl-end text-lg-start text-md-end text-start d-flex align-items-center justify-content-end flex-md-row flex-column mb-3 mb-md-0"fB>>' +
+                '>t' +
+                '<"row mx-2"' +
+                '<"col-sm-12 col-md-6"i>' +
+                '<"col-sm-12 col-md-6"p>' +
+                '>',
+        language: {
+            sLengthMenu: '_MENU_',
+            search: '',
+            searchPlaceholder: 'Search..'
+        },
+        buttons: [],
+        responsive: true
     });
-}
-
-
-var formChofer = document.getElementById('frmAddChofer');
+});
 
 function agregarChofer() {
     if (validarFormChofer()) {
@@ -85,11 +105,11 @@ function eliminarChofer(id) {
 
 function validarFormChofer() {
     var form = document.getElementById('frmAddChofer');
-    if (form.txtappat.value == "") {
+    if (form.appat.value == "") {
         swal.fire('ERROR', 'El apellido paterno es requerido', 'error');
         return false;
     }
-    if (form.txtapmat.value == "") {
+    if (form.apmat.value == "") {
         swal.fire('ERROR', 'El apellido materno es requerido', 'error');
         return false;
     }
@@ -101,16 +121,8 @@ function validarFormChofer() {
         swal.fire('ERROR', 'El dni es requerido', 'error');
         return false;
     }
-    if (form.txtDni.value == "") {
-        swal.fire('ERROR', 'El origen de viaje es requerido', 'error');
-        return false;
-    }
     if (form.licencia.value == "") {
         swal.fire('ERROR', 'La Licencia es requerida', 'error');
-        return false;
-    }
-    if (form.contratacion.value == "") {
-        swal.fire('ERROR', 'La fecha de contratacion es requerida', 'error');
         return false;
     }
     if (form.vencLicencia.value == "") {
@@ -121,25 +133,25 @@ function validarFormChofer() {
         swal.fire('ERROR', 'El número de telefono es requerido', 'error');
         return false;
     }
-    if (form.disponibilidad.value == "") {
-        swal.fire('ERROR', 'La disponibilidad es requerida', 'error');
-        return false;
-    }
-    if (form.estado.value == "") {
-        swal.fire('ERROR', 'El estado es requerido', 'error');
-        return false;
-    }
+//    if (form.disponibilidad.value == "") {
+//        swal.fire('ERROR', 'La disponibilidad es requerida', 'error');
+//        return false;
+//    }
+//    if (form.estado.value == "") {
+//        swal.fire('ERROR', 'El estado es requerido', 'error');
+//        return false;
+//    }
     
     return true;
 }
 
-function listarChoferes() {
-    $.ajax({
-        url: '../ObtenerChoferes',
-        type: 'POST',
-        success: function (response) {
-            console.log('Exito listar choferes');
-        }
-    });
-}
+//function listarChoferes() {
+//    $.ajax({
+//        url: '../ObtenerChoferes',
+//        type: 'POST',
+//        success: function (response) {
+//            console.log('Exito listar choferes');
+//        }
+//    });
+//}
 
